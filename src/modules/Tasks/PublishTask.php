@@ -17,7 +17,12 @@
   +------------------------------------------------------------------------+
 */
 
-return [
-    Devtools\Provider\Registry\ServiceProvider::class,
-    Devtools\Provider\EventsManager\ServiceProvider::class,
-];
+use Phalcon\Cli\Task;
+
+class PublishTask extends Task
+{
+    public function mainAction()
+    {
+        echo 'это задача по умолчанию и действие по умолчанию PUBLISH' . PHP_EOL;
+    }
+}

@@ -17,25 +17,24 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Devtools\Core\Exceptions;
+namespace Devtools\Migration;
 
-class ConsoleCommandsExceptions extends \Exception
+use Devtools\Core\Builder\MigrationAware;
+
+/**
+ * Devtools\Migration\MigrationRun
+ *
+ * Class run migration
+ *
+ * @package Devtools\Migration
+ */
+class MigrationRun extends MigrationAware
 {
-//    public function __construct($argv)
-//    {
-////        unset($argv[0]);
-//
-//        parent::__construct('Unknown command "' . $argv . '"');
-////        parent::__construct('Unknown command "' . implode(' ', $argv) . '"');
-//    }
-
-//    public function __construct($message, $code, Exception $previous)
-//    {
-//        parent::__construct($message, $code, $previous);
-//    }
-
-public function __construct($message, $code, \Exception $previous)
-{
-    parent::__construct($message, $code, $previous);
-}
+    /**
+     * Run migration
+     */
+    public function execute()
+    {
+        // TODO: Implement execute() method.
+    }
 }

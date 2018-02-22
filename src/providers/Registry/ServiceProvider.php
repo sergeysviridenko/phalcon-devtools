@@ -17,7 +17,7 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Devtools\Provider\EventsManager;
+namespace Devtools\Provider\Registry;
 
 use Phalcon\Registry;
 use Phalcon\DiInterface;

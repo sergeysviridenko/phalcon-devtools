@@ -17,7 +17,19 @@
   +------------------------------------------------------------------------+
 */
 
-return [
-    Devtools\Provider\Registry\ServiceProvider::class,
-    Devtools\Provider\EventsManager\ServiceProvider::class,
-];
+namespace Devtools\Core;
+
+/**
+ * Devtools\Core\FactoryExportData
+ *
+ * Export data to application interface
+ *
+ * @package Devtools\Core
+ */
+interface FactoryExportData
+{
+    /*
+     * Export prepared data to applications
+     */
+    public function export();
+}

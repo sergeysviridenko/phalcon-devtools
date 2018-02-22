@@ -17,9 +17,18 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Devtools\Core\Devtools;
+namespace Devtools\Core;
 
-class ParamsHandler
+/**
+ * Devtools\Core\FactoryMigration
+ *
+ * Migration interface
+ *
+ * @package Devtools\Core
+ */
+interface FactoryMigration
 {
-    
+    public function execute();
+
+    public function setOptions(FactoryOptions $options);
 }
