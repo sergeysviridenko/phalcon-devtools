@@ -20,8 +20,8 @@ with Phalcon framework.
 
 ## Requirements
 
-* PHP >= 5.5
-* Phalcon >= 3.3.0
+* PHP >= 7.0
+* Phalcon >= 4.0.0
 
 ## Installing via Composer
 
@@ -36,7 +36,7 @@ Create the composer.json file as follows:
 ```json
 {
     "require-dev": {
-        "phalcon/devtools": "~3.3"
+        "phalcon/devtools": "~4.0"
     }
 }
 ```
@@ -114,7 +114,7 @@ This command should display something similar to:
 ```sh
 $ phalcon --help
 
-Phalcon DevTools (3.3.0)
+Phalcon DevTools (4.0.0)
 
 Help:
   Lists the commands available in Phalcon devtools
