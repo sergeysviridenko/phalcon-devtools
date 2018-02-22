@@ -17,7 +17,7 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Devtools\Core;
+namespace Devtools;
 
 use Phalcon\Di;
 use Phalcon\Loader;
@@ -26,9 +26,9 @@ use Phalcon\Cli\Console as ConsoleApp;
 use Phalcon\Di\FactoryDefault\Cli as CliDI;
 
 /**
- * Devtools\Core\Application
+ * Devtools\Application
  *
- * @package Devtools\Core
+ * @package Devtools
  */
 class Application
 {
