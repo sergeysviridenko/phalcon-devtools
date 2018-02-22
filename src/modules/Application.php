@@ -54,29 +54,27 @@ class Application
             ]
         );
         $loader->register();
-
-
-
     }
 
     public function run(array $argv)
     {
         try {
-            $this->console->handle($this->getConsoleCommandArray($argv));
+            $this->console->handle($this->handleConsoleCommand($argv));
         } catch (\Exception $e) {
             fwrite(STDERR, StringColorize::error('Unknown command "' . $this->getConsoleCommand($argv) . '"'));
         }
     }
 
+
     protected function getApplicationConfig()
     {
-
+        //@todo write it
     }
 
     /**
      * @return array
      */
-    protected function getConsoleCommandArray(array $argv)
+    protected function handleConsoleCommand(array $argv)
     {
         $arguments = [];
 
@@ -95,6 +93,7 @@ class Application
 
     /**
      * @return string
+     * @todo move this to class that handle string
      */
     protected function getConsoleCommand(array $argv)
     {

@@ -17,7 +17,24 @@
   +------------------------------------------------------------------------+
 */
 
-return [
-    Devtools\Provider\Registry\ServiceProvider::class,
-    Devtools\Provider\EventsManager\ServiceProvider::class,
-];
+namespace Devtools\Migration;
+
+use Devtools\Core\Builder\MigrationAware;
+
+/**
+ * Devtools\Migration\MigrationGenerate
+ *
+ * Class generate migration
+ *
+ * @package Devtools\Migration
+ */
+class MigrationGenerate extends MigrationAware
+{
+    /**
+     * Generate migration
+     */
+    public function execute()
+    {
+        // TODO: Implement execute() method.
+    }
+}

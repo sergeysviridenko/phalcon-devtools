@@ -18,6 +18,5 @@
 */
 
 return [
-    Devtools\Provider\Registry\ServiceProvider::class,
-    Devtools\Provider\EventsManager\ServiceProvider::class,
+
 ];

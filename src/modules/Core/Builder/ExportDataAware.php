@@ -17,7 +17,21 @@
   +------------------------------------------------------------------------+
 */
 
-return [
-    Devtools\Provider\Registry\ServiceProvider::class,
-    Devtools\Provider\EventsManager\ServiceProvider::class,
-];
+namespace Devtools\Core\Builder;
+
+use Devtools\Core\FactoryExportData;
+
+/**
+ * Devtools\Core\Builder\ExportDataAware
+ *
+ * Export data to application base class
+ *
+ * @package Devtools\Core\Builder
+ */
+abstract class ExportDataAware implements FactoryExportData
+{
+    /*
+     * Export prepared data to applications
+     */
+    abstract public function export();
+}

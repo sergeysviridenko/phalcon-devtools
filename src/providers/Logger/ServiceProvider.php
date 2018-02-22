@@ -40,45 +40,6 @@ class ServiceProvider implements ServiceProviderInterface
      */
     public function register(DiInterface $di)
     {
-        $this->di->setShared(
-            'logger',
-            function () use ($hostName, $basePath) {
-                $logLevel = Logger::ERROR;
-                if (ENV_DEVELOPMENT === APPLICATION_ENV) {
-                    $logLevel = Logger::DEBUG;
-                }
-
-                $ptoolsPath = $basePath . DS . '.phalcon' . DS;
-                if (is_dir($ptoolsPath) && is_writable($ptoolsPath)) {
-                    $formatter = new LineFormatter("%date% {$hostName} php: [%type%] %message%", 'D j H:i:s');
-                    $logger    = new FileLogger($ptoolsPath . 'devtools.log');
-                } else {
-                    $formatter = new LineFormatter("[devtools@{$hostName}]: [%type%] %message%", 'D j H:i:s');
-                    $logger    = new Stream('php://stderr');
-                }
-
-                $logger->setFormatter($formatter);
-                $logger->setLogLevel($logLevel);
-
-                return $logger;
-            }
-        );
-        
-        
-        
-        
-        
-        
-        
-        $di->setShared(
-            'logger',
-            function () {
-                $logLevel = Logger::ERROR;
-
-                if (ENV_DEVELOPMENT === APPLICATION_ENV) {
-                    $logLevel = Logger::DEBUG;
-                }
-            }
-        );
+        //@todo add logger
     }
 }

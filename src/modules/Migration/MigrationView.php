@@ -17,26 +17,24 @@
   +------------------------------------------------------------------------+
 */
 
-use Phalcon\Cli\Task;
+namespace Devtools\Migration;
 
-class MainTask extends Task
+use Devtools\Core\Builder\MigrationAware;
+
+/**
+ * Devtools\Migration\MigrationView
+ *
+ * Class view migration list
+ *
+ * @package Devtools\Migration
+ */
+class MigrationView extends MigrationAware
 {
-    public function mainAction()
-    {
-        echo 'Это задача по умолчанию и действие по умолчанию' . PHP_EOL;
-    }
-
     /**
-     * @param array $params
+     * View migration
      */
-    public function testAction(array $params)
+    public function execute()
     {
-        echo sprintf('hello %s', $params[0]);
-
-        echo PHP_EOL;
-
-        echo sprintf('best regards, %s', $params[1]);
-
-        echo PHP_EOL;
+        // TODO: Implement execute() method.
     }
 }

@@ -17,3 +17,9 @@
   +------------------------------------------------------------------------+
 */
 
+return [
+    'MigrationRun'      => Devtools\Migration\MigrationRun::class,
+    'Publish'           => Devtools\Publish\PublishSettings::class,
+    'MigrationView'     => Devtools\Migration\MigrationView::class,
+    'MigrationGenerate' => Devtools\Migration\MigrationGenerate::class,
+];

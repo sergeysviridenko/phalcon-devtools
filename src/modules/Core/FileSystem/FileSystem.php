@@ -26,5 +26,5 @@ namespace Devtools\Core\FileSystem;
  */
 class FileSystem
 {
-
+    //@todo create structure for classes that will work with filesystem
 }

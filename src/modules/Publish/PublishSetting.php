@@ -17,26 +17,24 @@
   +------------------------------------------------------------------------+
 */
 
-use Phalcon\Cli\Task;
+namespace Devtools\Publish;
 
-class PublishTask extends Task
+use Devtools\Core\Builder\ExportDataAware;
+
+/**
+ * Devtools\Publish\PublishSettings
+ *
+ * Export settings to user application
+ *
+ * @package Devtools\Publish
+ */
+class PublishSettings extends ExportDataAware
 {
-    public function mainAction()
-    {
-        echo 'это задача по умолчанию и действие по умолчанию PUBLISH' . PHP_EOL;
-    }
-
-    /**
-     * @param array $params
+    /*
+     * Export prepared data to applications
      */
-    public function runAction(array $params)
+    public function export()
     {
-        echo sprintf('hello PUBLISH %s', $params[0]);
-
-        echo PHP_EOL;
-
-        echo sprintf('best regards PUBLISH, %s', $params[1]);
-
-        echo PHP_EOL;
+        // TODO: Implement export() method.
     }
 }

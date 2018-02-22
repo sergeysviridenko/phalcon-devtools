@@ -17,7 +17,32 @@
   +------------------------------------------------------------------------+
 */
 
-return [
-    Devtools\Provider\Registry\ServiceProvider::class,
-    Devtools\Provider\EventsManager\ServiceProvider::class,
-];
+namespace Devtools\Core\Builder;
+
+use Devtools\Core\FactoryOptions;
+use Devtools\Core\FactoryMigration;
+use Devtools\Core\Options\OptionsAware as MigrationOptions;
+
+/**
+ * Devtools\Core\Builder\MigrationAware
+ *
+ * Migration base class
+ *
+ * @package Devtools\Core\Builder
+ */
+abstract class MigrationAware implements FactoryMigration
+{
+    /**@var MigrationOptions */
+    protected $options;
+
+    /** Execute migration action */
+    abstract public function execute();
+
+    /**
+     * Set option container
+     */
+    public function setOptions(FactoryOptions $options)
+    {
+        $this->options = $options;
+    }
+}
