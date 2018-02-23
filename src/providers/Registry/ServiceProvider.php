@@ -36,7 +36,7 @@ class ServiceProvider implements ServiceProviderInterface
      * @var array $path
      */
     protected $path = [
-
+        'template_path' => PTOOLSPATH . DS . 'resources' . DS . 'templates',
     ];
 
     /**

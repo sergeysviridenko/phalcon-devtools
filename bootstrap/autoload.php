@@ -27,19 +27,13 @@ if (!extension_loaded('phalcon')) {
     );
 }
 
-/**
- * @const DEVTOOLS_START_TIME The start time of the Devtools. Used for profiling.
- */
+/** @const DEVTOOLS_START_TIME The start time of the Devtools. Used for profiling. */
 defined('DEVTOOLS_START_TIME') || define('DEVTOOLS_START_TIME', microtime(true));
 
-/**
- * @const DEVTOOLS_START_MEMORY The memory usage at the start of the application. Used for profiling.
- */
+/** @const DEVTOOLS_START_MEMORY The memory usage at the start of the application. Used for profiling. */
 defined('DEVTOOLS_START_MEMORY') || define('DEVTOOLS_START_MEMORY', memory_get_usage());
 
-/**
- * @const PTOOLSPATH The path to the Phalcon Developers Tools.
- */
+/** @const PTOOLSPATH The path to the Phalcon Developers Tools. */
 defined('PTOOLSPATH') || define('PTOOLSPATH', rtrim(trim(getenv('PTOOLSPATH'), '\"\'') ?: dirname(dirname(__FILE__)), '\\/'));
 
 /**
@@ -55,49 +49,28 @@ if (rtrim(strtolower(realpath(PTOOLSPATH)), '\\/') !== rtrim(strtolower(realpath
     );
 }
 
-/**
- * @const DS The DIRECTORY_SEPARATOR shortcut.
- */
+/** @const DS The DIRECTORY_SEPARATOR shortcut. */
 defined('DS') || define('DS', DIRECTORY_SEPARATOR);
 
-/**
- * @const TEMPLATE_PATH DevTools templates path.
- */
-defined('TEMPLATE_PATH') || define('TEMPLATE_PATH', PTOOLSPATH . DS .'templates');
-
-/**
- * @const ENV_PRODUCTION Application production stage.
- */
+/** @const ENV_PRODUCTION Application production stage. */
 defined('ENV_PRODUCTION') || define('ENV_PRODUCTION', 'production');
 
-/**
- * @const ENV_STAGING Application staging stage.
- */
+/** @const ENV_STAGING Application staging stage. */
 defined('ENV_STAGING') || define('ENV_STAGING', 'staging');
 
-/**
- * @const ENV_DEVELOPMENT Application development stage.
- */
+/** @const ENV_DEVELOPMENT Application development stage. */
 defined('ENV_DEVELOPMENT') || define('ENV_DEVELOPMENT', 'development');
 
-/**
- * @const ENV_TESTING Application test stage.
- */
+/** @const ENV_TESTING Application test stage. */
 defined('ENV_TESTING') || define('ENV_TESTING', 'testing');
 
-/**
- * @const APPLICATION_ENV Current application stage.
- */
+/** @const APPLICATION_ENV Current application stage. */
 defined('APPLICATION_ENV') || define('APPLICATION_ENV', getenv('APP_ENV') ?: ENV_DEVELOPMENT);
 
-/**
- * @const HOSTNAME The current hostname.
- */
+/** @const HOSTNAME The current hostname. */
 defined('HOSTNAME') || define('HOSTNAME', explode('.', gethostname())[0]);
 
-/**
- * @const ADMIN_LTE_VERSION The AdminLTE version.
- */
+/** @const ADMIN_LTE_VERSION The AdminLTE version. */
 defined('ADMIN_LTE_VERSION') || define('ADMIN_LTE_VERSION', '2.3.6');
 
 /** @const COMPATIBLE_VERSION The compatible Phalcon version. */
@@ -113,6 +86,11 @@ defined('COMPATIBLE_VERSION') || define('COMPATIBLE_VERSION', 3020040);
         'Devtools'             => PTOOLSPATH . DS . 'src' . DS . 'modules' . DS,
         'Plugins'              => PTOOLSPATH . DS . 'plugins' . DS,
     ])
+    ->registerDirs(
+        [
+            PTOOLSPATH . DS . 'src' . DS . 'modules' . DS . 'Tasks',
+        ]
+    )
     ->register();
 
 /**

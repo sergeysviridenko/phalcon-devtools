@@ -32,11 +32,11 @@ use Phalcon\Di\FactoryDefault\Cli as CliDI;
  */
 class Application
 {
+    /**@var Cli*/
     private $di;
 
+    /**@var Console*/
     private $console;
-
-    private $arguments = [];
 
     public function __construct()
     {
@@ -45,15 +45,6 @@ class Application
 
         $this->console = new ConsoleApp();
         $this->console->setDI($this->di);
-
-
-        $loader = new Loader();
-        $loader->registerDirs(
-            [
-                __DIR__ . '/Tasks',
-            ]
-        );
-        $loader->register();
     }
 
     public function run(array $argv)
