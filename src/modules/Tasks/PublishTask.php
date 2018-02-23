@@ -23,6 +23,16 @@ class PublishTask extends Task
 {
     public function mainAction()
     {
-        echo 'это задача по умолчанию и действие по умолчанию PUBLISH' . PHP_EOL;
+        echo 'Publish content will be here' . PHP_EOL;
+    }
+
+    public function runAction()
+    {
+        echo 'Publish content run command will be here' . PHP_EOL;
+    }
+
+    public function helpAction()
+    {
+        echo 'Publish content help command will be here' . PHP_EOL;
     }
 }
