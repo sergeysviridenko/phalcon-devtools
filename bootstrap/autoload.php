@@ -18,7 +18,7 @@
 */
 
 use Phalcon\Loader;
-use Devtools\Core\Devtools\Version;
+use Phalcon\Devtools\Modules\Core\Devtools\Version;
 
 if (!extension_loaded('phalcon')) {
     throw new Exception(

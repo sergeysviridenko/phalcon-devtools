@@ -172,7 +172,7 @@ final class StringColorize
 
     public static function head($msg)
     {
-        return static::colorize($msg, Color::FG_BROWN);
+        return static::colorize($msg, self::FG_BROWN);
     }
 
     /**
@@ -186,9 +186,9 @@ final class StringColorize
     {
         $msg = 'Error: ' . $msg;
         $space = strlen($msg) + 4;
-        $out = static::colorize(str_pad(' ', $space), Color::FG_WHITE, Color::AT_BOLD, Color::BG_RED) . PHP_EOL;
-        $out .= static::colorize('  ' . $msg . '  ', Color::FG_WHITE, Color::AT_BOLD, Color::BG_RED) . PHP_EOL;
-        $out .= static::colorize(str_pad(' ', $space), Color::FG_WHITE, Color::AT_BOLD, Color::BG_RED) . PHP_EOL;
+        $out = static::colorize(str_pad(' ', $space), self::FG_WHITE, self::AT_BOLD, self::BG_RED) . PHP_EOL;
+        $out .= static::colorize('  ' . $msg . '  ', self::FG_WHITE, self::AT_BOLD, self::BG_RED) . PHP_EOL;
+        $out .= static::colorize(str_pad(' ', $space), self::FG_WHITE, self::AT_BOLD, self::BG_RED) . PHP_EOL;
 
         return $out;
     }
@@ -204,9 +204,9 @@ final class StringColorize
     {
         $msg = 'Success: ' . $msg;
         $space = strlen($msg) + 4;
-        $out = static::colorize(str_pad(' ', $space), Color::FG_WHITE, Color::AT_BOLD, Color::BG_GREEN) . PHP_EOL;
-        $out .= static::colorize('  ' . $msg . '  ', Color::FG_WHITE, Color::AT_BOLD, Color::BG_GREEN) . PHP_EOL;
-        $out .= static::colorize(str_pad(' ', $space), Color::FG_WHITE, Color::AT_BOLD, Color::BG_GREEN) . PHP_EOL;
+        $out = static::colorize(str_pad(' ', $space), self::FG_WHITE, self::AT_BOLD, self::BG_GREEN) . PHP_EOL;
+        $out .= static::colorize('  ' . $msg . '  ', self::FG_WHITE, self::AT_BOLD, self::BG_GREEN) . PHP_EOL;
+        $out .= static::colorize(str_pad(' ', $space), self::FG_WHITE, self::AT_BOLD, self::BG_GREEN) . PHP_EOL;
 
         return $out;
     }
@@ -222,9 +222,9 @@ final class StringColorize
     {
         $msg = 'Info: ' . $msg;
         $space = strlen($msg) + 4;
-        $out = static::colorize(str_pad(' ', $space), Color::FG_WHITE, Color::AT_BOLD, Color::BG_BLUE) . PHP_EOL;
-        $out .= static::colorize('  ' . $msg . '  ', Color::FG_WHITE, Color::AT_BOLD, Color::BG_BLUE) . PHP_EOL;
-        $out .= static::colorize(str_pad(' ', $space), Color::FG_WHITE, Color::AT_BOLD, Color::BG_BLUE) . PHP_EOL;
+        $out = static::colorize(str_pad(' ', $space), self::FG_WHITE, self::AT_BOLD, self::BG_BLUE) . PHP_EOL;
+        $out .= static::colorize('  ' . $msg . '  ', self::FG_WHITE, self::AT_BOLD, self::BG_BLUE) . PHP_EOL;
+        $out .= static::colorize(str_pad(' ', $space), self::FG_WHITE, self::AT_BOLD, self::BG_BLUE) . PHP_EOL;
 
         return $out;
     }

@@ -18,7 +18,7 @@
   +------------------------------------------------------------------------+
 */
 
-use Phalcon\Devtools\Application;
+use Phalcon\Devtools\Modules\Application;
 use Phalcon\Devtools\Modules\Core\Devtools\Version;
 use Phalcon\Devtools\Modules\Core\String\StringColorize;
 use Phalcon\Exception as PhalconException;
@@ -33,15 +33,15 @@ try {
 
     $result = true;
 } catch (\Exception $e) {
-    fwrite(STDERR, StringColorize::info($e->getMessage() . " " . $e->getMessage()));
+    fwrite(STDERR, StringColorize::error($e->getMessage()));
 
     $result = false;
 } catch (PhalconException $e) {
-    fwrite(STDERR, StringColorize::info($e->getMessage() . " " . $e->getMessage()));
+    fwrite(STDERR, StringColorize::error($e->getMessage()));
 
     $result = false;
 } catch (\Throwable $e) {
-    fwrite(STDERR, StringColorize::info($e->getMessage() . " " . $e->getMessage()));
+    fwrite(STDERR, StringColorize::error($e->getMessage()));
 
     $result = false;
 }
