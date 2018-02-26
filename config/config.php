@@ -18,5 +18,8 @@
 */
 
 return [
-
+    'modules' => [
+        'Migration' => Phalcon\Devtools\Modules\Migrations\Module::class,
+        'Publish'   => Phalcon\Devtools\Modules\Publish\Module::class,
+    ],
 ];
