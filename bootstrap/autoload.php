@@ -83,8 +83,7 @@ defined('COMPATIBLE_VERSION') || define('COMPATIBLE_VERSION', 3020040);
     PTOOLSPATH . DS . 'scripts' . DS
 ])
     ->registerNamespaces([
-        'Devtools'             => PTOOLSPATH . DS . 'src' . DS . 'modules' . DS,
-        'Plugins'              => PTOOLSPATH . DS . 'plugins' . DS,
+        'Phalcon\Devtools'  => PTOOLSPATH . DS . 'src' . DS,
     ])
     ->registerDirs(
         [

@@ -17,14 +17,14 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Devtools\Core\String;
+namespace Phalcon\Devtools\Modules\Core\String;
 
 /**
- * Devtools\Core\String\StringColorize
+ * Phalcon\Devtools\Modules\Core\String\StringColorize
  *
  * Allows to generate messages using colors on xterm, ddterm, linux, etc.
  *
- * @package Devtools\Core\String
+ * @package Phalcon\Devtools\Modules\Core\String
  */
 final class StringColorize
 {

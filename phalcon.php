@@ -18,9 +18,9 @@
   +------------------------------------------------------------------------+
 */
 
-use Devtools\Application;
-use Devtools\Core\Devtools\Version;
-use Devtools\Core\String\StringColorize;
+use Phalcon\Devtools\Application;
+use Phalcon\Devtools\Modules\Core\Devtools\Version;
+use Phalcon\Devtools\Modules\Core\String\StringColorize;
 use Phalcon\Exception as PhalconException;
 
 try {

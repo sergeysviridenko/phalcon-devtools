@@ -17,18 +17,18 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Devtools;
+namespace Phalcon\Devtools;
 
 use Phalcon\Di;
 use Phalcon\Loader;
-use Devtools\Core\String\StringColorize;
+use Phalcon\Devtools\Modules\Core\String\StringColorize;
 use Phalcon\Cli\Console as ConsoleApp;
 use Phalcon\Di\FactoryDefault\Cli as CliDI;
 
 /**
- * Devtools\Application
+ * Phalcon\Devtools\Application
  *
- * @package Devtools
+ * @package Phalcon\Devtools
  */
 class Application
 {

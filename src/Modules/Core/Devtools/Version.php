@@ -13,28 +13,32 @@
   | obtain it through the world-wide-web, please send an email             |
   | to license@phalconphp.com so we can send you a copy immediately.       |
   +------------------------------------------------------------------------+
-  | Authors: Sergii Svyrydenko <sergey.v.sviridenko@gmail.com              |
+  | Authors: Andres Gutierrez <andres@phalconphp.com>                      |
+  |          Eduar Carvajal <eduar@phalconphp.com>                         |
+  |          Serghei Iakovlev <serghei@phalconphp.com>                     |
   +------------------------------------------------------------------------+
 */
 
-namespace Devtools\Migration;
+namespace Phalcon\Devtools\Modules\Core\Devtools;
 
-use Devtools\Core\Builder\MigrationAware;
+use Phalcon\Version as PhVersion;
 
 /**
- * Devtools\Migration\MigrationRun
+ * Phalcon\Devtools\Modules\Core\Devtools\Version
  *
- * Class run migration
+ * This class allows to get the installed version of the Developer Tools
  *
- * @package Devtools\Migration
+ * @package Phalcon\Devtools\Modules\Core\Devtools
  */
-class MigrationRun extends MigrationAware
+class Version extends PhVersion
 {
     /**
-     * Run migration
+     * {@inheritdoc}
+     *
+     * @return array
      */
-    public function execute()
+    protected static function _getVersion()
     {
-        // TODO: Implement execute() method.
+        return [4, 0, 0, 4, 0];
     }
 }
