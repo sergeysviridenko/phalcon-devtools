@@ -29,7 +29,7 @@ use Devtools\Core\Exceptions\InvalidArgumentException;
  *
  * @package Devtools\Core\CliCommands
  *
- * @todo write unit-test and `--foo` command handle
+ * @todo write unit-test and handle command like `--foo`
  */
 class CliCommandsAware implements FactoryCliCommands
 {

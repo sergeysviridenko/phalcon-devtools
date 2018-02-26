@@ -19,12 +19,14 @@
 
 namespace Devtools\Core\FileSystem;
 
+use Devtools\Core\FactoryFileSystem;
+
 /**
- * Devtools\Core\\FileSystem\FileSystem
+ * Devtools\Core\FileSystem\FileSystemAware
  *
  * @package Devtools\Core\FileSystem
  */
-class FileSystem
+abstract class FileSystemAware implements FactoryFileSystem
 {
-    //@todo create structure for classes that will work with filesystem
+    
 }
