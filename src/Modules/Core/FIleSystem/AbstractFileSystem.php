@@ -28,5 +28,78 @@ use Phalcon\Devtools\Modules\Core\FileSystemInterface;
  */
 abstract class AbstractFileSystem implements FileSystemInterface
 {
+    /**@var \DirectoryIterator*/
+    protected $directoryIterator;
 
+    /**@var \SplFileInfo*/
+    protected $file;
+
+    /**
+     * Get all folders in directory
+     *
+     * @return array
+     */
+    public function getFolderList(string $path)
+    {
+        $this->setDirectoryIterator($path);
+
+        return $this->getAvailableFolder();
+    }
+
+    /**
+     * Get all files in directory
+     *
+     * @return array
+     */
+    public function getFilesList(string $path)
+    {
+        $this->setDirectoryIterator($path);
+
+        return $this->getAvailableFiles();
+    }
+
+    /**
+     * Create new \DirectoryIterator class
+     */
+    protected function setDirectoryIterator(string $path)
+    {
+        $this->directoryIterator = new \DirectoryIterator($path);
+    }
+
+    /**
+     * @return array
+     */
+    protected function getAvailableFolder()
+    {
+        $folderList = [];
+
+        while ($this->directoryIterator->valid()) {
+            if ($this->directoryIterator->isDir() && !$this->directoryIterator->isDot()) {
+                $folderList[] = $this->directoryIterator->getFilename();
+            }
+        }
+
+        return $folderList;
+    }
+
+    protected function getAvailableFiles()
+    {
+        $filesList = [];
+
+        while ($this->directoryIterator->valid()) {
+            if ($this->directoryIterator->isFile() && !$this->directoryIterator->isDot()) {
+                $filesList[] = $this->directoryIterator->getFilename();
+            }
+        }
+
+        return $filesList;
+    }
+
+    /**
+     * Create new \SplFileInfo class
+     */
+    protected function setFileInfo(string $path)
+    {
+        $this->file = new \SplFileInfo($path);
+    }
 }
