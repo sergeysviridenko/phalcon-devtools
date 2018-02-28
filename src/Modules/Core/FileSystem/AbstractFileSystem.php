@@ -43,7 +43,6 @@ abstract class AbstractFileSystem implements FileSystemInterface
 
         if (is_dir($path)) {
             $this->directoryIterator = new \DirectoryIterator($path);
-
             return;
         }
 
