@@ -42,6 +42,8 @@ namespace Phalcon\Devtools\Modules\Core\Commands;
  * Phalcon\Devtools\Modules\Core\Commands\CommandParser
  *
  * @package Phalcon\Devtools\Modules\Core\Commands
+ *
+ * @todo refactor
  */
 class OptionParser
 {
