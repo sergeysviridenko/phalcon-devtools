@@ -18,9 +18,6 @@
 */
 
 return [
-    'namespaces' => [//@todo add autoloader
-
-    ],
     'modules' => [//@todo add autoloader
         'Migration' => 'Phalcon\Devtools\Modules\Migrations',
         'Publish'   => 'Phalcon\Devtools\Modules\Publish',
