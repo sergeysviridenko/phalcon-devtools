@@ -55,7 +55,7 @@ abstract class AbstractFileSystem implements FileSystemInterface
     {
         $this->setDirectoryIterator($path);
 
-        return $this->getAvailableFiles();
+        return $this->getAvailableFolder(false);
     }
 
     /**
@@ -69,33 +69,27 @@ abstract class AbstractFileSystem implements FileSystemInterface
     /**
      * @return array
      */
-    protected function getAvailableFolder()
+    protected function getAvailableFolder($folder = true)
     {
         $folderList = [];
-
         while ($this->directoryIterator->valid()) {
-            if ($this->directoryIterator->isDir() && !$this->directoryIterator->isDot()) {
+            if ($this->directoryIterator->isDot()) {
+                $this->directoryIterator->next();
+                continue;
+            }
+
+            if ($this->directoryIterator->isDir() && $folder) {
                 $folderList[] = $this->directoryIterator->getFilename();
             }
+
+            if ($this->directoryIterator->isFile() && !$folder) {
+                $folderList[] = $this->directoryIterator->getFilename();
+            }
+
+            $this->directoryIterator->next();
         }
 
         return $folderList;
-    }
-
-    /**
-     * @return array
-     */
-    protected function getAvailableFiles()
-    {
-        $filesList = [];
-
-        while ($this->directoryIterator->valid()) {
-            if ($this->directoryIterator->isFile() && !$this->directoryIterator->isDot()) {
-                $filesList[] = $this->directoryIterator->getFilename();
-            }
-        }
-
-        return $filesList;
     }
 
     /**
