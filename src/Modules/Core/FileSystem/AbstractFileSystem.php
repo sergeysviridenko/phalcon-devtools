@@ -20,6 +20,7 @@
 namespace Phalcon\Devtools\Modules\Core\FileSystem;
 
 use Phalcon\Devtools\Modules\Core\FileSystemInterface;
+use Phalcon\Devtools\Modules\Core\Exceptions\RuntimeException;
 
 /**
  * Phalcon\Devtools\Modules\Core\FileSystem\AbstractFileSystem
@@ -29,21 +30,62 @@ use Phalcon\Devtools\Modules\Core\FileSystemInterface;
 abstract class AbstractFileSystem implements FileSystemInterface
 {
     /**@var \DirectoryIterator*/
-    protected $directoryIterator;
+    protected $directoryIterator = null;
 
     /**@var \SplFileInfo*/
-    protected $fileObject;
+    protected $fileObject = null;
+
+    public function __construct($path = '')
+    {
+        if (empty($path)) {
+            return;
+        }
+
+        if (is_dir($path)) {
+            $this->directoryIterator = new \DirectoryIterator($path);
+
+            return;
+        }
+
+        if (is_file($path)) {
+            $this->fileObject = new \SplFileInfo($path);
+        }
+    }
+
+    /**
+     * Create new \SplFileInfo object
+     */
+    public function setFile(string $path)
+    {
+        $this->fileObject = new \SplFileInfo($path);
+    }
+
+    /**
+     * Create new \DirectoryIterator object
+     */
+    public function setDirectoryIterator(string $path)
+    {
+        $this->directoryIterator = new \DirectoryIterator($path);
+    }
+
+    /**
+     * Get all folders and files in directory
+     *
+     * @return array
+     */
+    public function getFoldersAndFilesList()
+    {
+        return $this->assertAvailableData();
+    }
 
     /**
      * Get all folders in directory
      *
      * @return array
      */
-    public function getFolderList(string $path)
+    public function getFoldersList()
     {
-        $this->setDirectoryIterator($path);
-
-        return $this->getAvailableFolder();
+        return $this->assertAvailableData('folder');
     }
 
     /**
@@ -51,52 +93,44 @@ abstract class AbstractFileSystem implements FileSystemInterface
      *
      * @return array
      */
-    public function getFilesList(string $path)
+    public function getFilesList()
     {
-        $this->setDirectoryIterator($path);
-
-        return $this->getAvailableFolder(false);
-    }
-
-    /**
-     * Create new \DirectoryIterator object
-     */
-    protected function setDirectoryIterator(string $path)
-    {
-        $this->directoryIterator = new \DirectoryIterator($path);
+        return $this->assertAvailableData('file');
     }
 
     /**
      * @return array
      */
-    protected function getAvailableFolder($folder = true)
+    protected function assertAvailableData($neededData = 'all')
     {
-        $folderList = [];
+        if (is_null($this->directoryIterator)) {
+            throw new RuntimeException("Uterator hasn't been defined");
+        }
+
+        $List = [];
+        $this->directoryIterator->rewind();
+
         while ($this->directoryIterator->valid()) {
             if ($this->directoryIterator->isDot()) {
                 $this->directoryIterator->next();
                 continue;
             }
 
-            if ($this->directoryIterator->isDir() && $folder) {
-                $folderList[] = $this->directoryIterator->getFilename();
+            if ($this->directoryIterator->isDir() && $neededData == 'folder') {
+                $List[] = $this->directoryIterator->getFilename();
             }
 
-            if ($this->directoryIterator->isFile() && !$folder) {
-                $folderList[] = $this->directoryIterator->getFilename();
+            if ($this->directoryIterator->isFile() && $neededData == 'file') {
+                $List[] = $this->directoryIterator->getFilename();
+            }
+
+            if ($neededData == 'all') {
+                $List[] = $this->directoryIterator->getFilename();
             }
 
             $this->directoryIterator->next();
         }
 
-        return $folderList;
-    }
-
-    /**
-     * Create new \SplFileInfo object
-     */
-    protected function setFileInfo(string $path)
-    {
-        $this->fileObject = new \SplFileInfo($path);
+        return $List;
     }
 }
