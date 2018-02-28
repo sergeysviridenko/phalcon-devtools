@@ -32,7 +32,7 @@ abstract class AbstractFileSystem implements FileSystemInterface
     protected $directoryIterator;
 
     /**@var \SplFileInfo*/
-    protected $file;
+    protected $fileObject;
 
     /**
      * Get all folders in directory
@@ -59,7 +59,7 @@ abstract class AbstractFileSystem implements FileSystemInterface
     }
 
     /**
-     * Create new \DirectoryIterator class
+     * Create new \DirectoryIterator object
      */
     protected function setDirectoryIterator(string $path)
     {
@@ -82,6 +82,9 @@ abstract class AbstractFileSystem implements FileSystemInterface
         return $folderList;
     }
 
+    /**
+     * @return array
+     */
     protected function getAvailableFiles()
     {
         $filesList = [];
@@ -96,10 +99,10 @@ abstract class AbstractFileSystem implements FileSystemInterface
     }
 
     /**
-     * Create new \SplFileInfo class
+     * Create new \SplFileInfo object
      */
     protected function setFileInfo(string $path)
     {
-        $this->file = new \SplFileInfo($path);
+        $this->fileObject = new \SplFileInfo($path);
     }
 }
