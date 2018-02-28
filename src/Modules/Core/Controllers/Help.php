@@ -17,6 +17,8 @@
   +------------------------------------------------------------------------+
 */
 
+namespace Phalcon\Devtools\Modules\Core\Controllers;
+
 use Phalcon\Cli\Task;
 
 class Help extends Task

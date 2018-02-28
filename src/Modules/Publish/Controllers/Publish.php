@@ -17,6 +17,8 @@
   +------------------------------------------------------------------------+
 */
 
+namespace Phalcon\Devtools\Modules\Publish\Controllers;
+
 use Phalcon\Cli\Task;
 
 class Publish extends Task
