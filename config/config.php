@@ -18,8 +18,11 @@
 */
 
 return [
-    'modules' => [
-        'Migration' => Phalcon\Devtools\Modules\Migrations\Module::class,
-        'Publish'   => Phalcon\Devtools\Modules\Publish\Module::class,
+    'namespaces' => [//@todo add autoloader
+
+    ],
+    'modules' => [//@todo add autoloader
+        'Migration' => 'Phalcon\Devtools\Modules\Migrations',
+        'Publish'   => 'Phalcon\Devtools\Modules\Publish',
     ],
 ];
