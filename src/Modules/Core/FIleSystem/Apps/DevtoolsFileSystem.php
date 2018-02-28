@@ -22,11 +22,11 @@ namespace Phalcon\Devtools\Modules\Core\FileSystem\Apps;
 use Phalcon\Devtools\Modules\Core\FileSystem\AbstractFileSystem;
 
 /**
- * Phalcon\Devtools\Modules\Core\FileSystem\Apps\DevtoolsFileSystems
+ * Phalcon\Devtools\Modules\Core\FileSystem\Apps\DevtoolsFileSystem
  *
  * @package Phalcon\Devtools\Modules\Core\FileSystem\Apps
  */
-class DevtoolsFileSystems extends AbstractFileSystem
+class DevtoolsFileSystem extends AbstractFileSystem
 {
 
 }
