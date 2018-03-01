@@ -19,7 +19,8 @@
 
 namespace Phalcon\Devtools\Modules\Core\Options;
 
-use Phalcon\Devtools\Modules\Core\OptionsInterface;
+use Phalcon\Devtools\Modules\Core\OptionsRegistryInterface;
+use Phalcon\Devtools\Modules\Core\Exceptions\InvalidArgumentException;
 
 /**
  * Phalcon\Devtools\Modules\Core\Options\OptionsAware
@@ -28,7 +29,7 @@ use Phalcon\Devtools\Modules\Core\OptionsInterface;
  *
  * @package Phalcon\Devtools\Modules\Core\Options
  */
-class OptionsAware implements OptionsInterface
+class OptionsRegistryAware implements OptionsRegistryInterface
 {
     /**
      * Option container
