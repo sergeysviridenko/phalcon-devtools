@@ -19,14 +19,11 @@
 */
 
 use Phalcon\Devtools\Modules\Application;
-use Phalcon\Devtools\Modules\Core\Devtools\Version;
 use Phalcon\Devtools\Modules\Core\String\StringColorize;
 use Phalcon\Exception as PhalconException;
 
 try {
     require dirname(__FILE__) . '/bootstrap/autoload.php';
-    $vendor = sprintf('Phalcon DevTools (%s)', Version::get());
-    print PHP_EOL . StringColorize::colorize($vendor, StringColorize::FG_GREEN, StringColorize::AT_BOLD) . PHP_EOL . PHP_EOL;
 
     $applicarion = new Application();
     $applicarion->run($argv);
