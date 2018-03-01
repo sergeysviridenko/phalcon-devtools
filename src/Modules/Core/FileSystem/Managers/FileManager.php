@@ -21,24 +21,36 @@ namespace Phalcon\Devtools\Modules\Core\FileSystem\Managers;
 
 use Phalcon\Devtools\Modules\Core\Exceptions\RuntimeException;
 use Phalcon\Devtools\Modules\Core\FileSystem\AbstractFileSystem;
+use Phalcon\Devtools\Modules\Core\Exceptions\InvalidArgumentException;
 
 /**
  * Phalcon\Devtools\Modules\Core\FileSystem\Managers\FileManager
+ * 
+ * @property \SplFileInfo $fileSystemManager
  *
  * @package Phalcon\Devtools\Modules\Core\FileSystem\Managers
  */
 class FileManager extends AbstractFileSystem
 {
-    /**@var \SplFileInfo*/
-    protected $fileSystemManager = null;
-
     public function getManager()
     {
-        if (is_null($this->fileSystemManager)) {
-            throw new RuntimeException("File object hasn't been defined yet");
-        }
+        $this->checkManager();
 
         return $this->fileSystemManager;
+    }
+
+    /*
+     * Read file content
+     *
+     * @return string
+     */
+    public function readFileContent()
+    {
+        $this->checkManager();
+
+        $fileObject = $this->fileSystemManager->openFile('r');
+        
+        return $fileObject->fread($this->fileSystemManager->getSize());
     }
 
     /**
@@ -46,10 +58,12 @@ class FileManager extends AbstractFileSystem
      */
     protected function assertManager(string $path)
     {
-        if (!is_file($path)) {
-            throw new RuntimeException("Path '{$path}' should be a file");
+        $manager = new \SplFileInfo($path);
+
+        if (!$this->fileSystemManager->isFile()) {
+            throw new InvalidArgumentException("Path '{$path}' should be a file");
         }
 
-        $this->fileSystemManager = new \SplFileInfo($path);
+        $this->fileSystemManager = $manager;
     }
 }

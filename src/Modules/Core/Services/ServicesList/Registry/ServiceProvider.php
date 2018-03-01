@@ -37,6 +37,7 @@ class ServiceProvider implements ServiceProviderInterface
      */
     protected $path = [
         'template_path' => PTOOLSPATH . DS . 'resources' . DS . 'templates',
+        'system_config_path' => PTOOLSPATH . DS . 'config',
     ];
 
     /**

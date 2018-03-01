@@ -20,6 +20,7 @@
 namespace Phalcon\Devtools\Modules\Core\FileSystem;
 
 use Phalcon\Devtools\Modules\Core\FileSystemInterface;
+use Phalcon\Devtools\Modules\Core\Exceptions\RuntimeException;
 
 /**
  * Phalcon\Devtools\Modules\Core\FileSystem\AbstractFileSystem
@@ -28,6 +29,8 @@ use Phalcon\Devtools\Modules\Core\FileSystemInterface;
  */
 abstract class AbstractFileSystem implements FileSystemInterface
 {
+    protected $fileSystemManager = null;
+    
     public function __construct(string $path = '')
     {
         if (!empty($path)) {
@@ -52,4 +55,16 @@ abstract class AbstractFileSystem implements FileSystemInterface
      * Set new object that handle directory, file or other
      */
     abstract protected function assertManager(string $path);
+
+    /**
+     * Check filesystem manager
+     */
+    protected function checkManager()
+    {
+        if (is_null($this->fileSystemManager)) {
+            throw new RuntimeException("Incorrect filesystem manager");
+        }
+
+        return true;
+    }
 }

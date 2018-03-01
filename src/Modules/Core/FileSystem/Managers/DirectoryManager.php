@@ -25,19 +25,16 @@ use Phalcon\Devtools\Modules\Core\FileSystem\AbstractFileSystem;
 /**
  * Phalcon\Devtools\Modules\Core\FileSystem\Managers\DirectoryManager
  *
+ * @property \DirectoryIterator $fileSystemManager
+ *
  * @package Phalcon\Devtools\Modules\Core\FileSystem\Managers
  */
 class DirectoryManager extends AbstractFileSystem
 {
-    /**@var \DirectoryIterator*/
-    protected $fileSystemManager = null;
-    
     public function getManager()
     {
-        if (is_null($this->fileSystemManager)) {
-            throw new RuntimeException("Directory iterator hasn't been defined yet");
-        }
-        
+        $this->checkManager();
+
         return $this->fileSystemManager;
     }
 
@@ -88,9 +85,7 @@ class DirectoryManager extends AbstractFileSystem
      */
     protected function assertAvailableData($neededData = 'all')
     {
-        if (is_null($this->fileSystemManager)) {
-            throw new RuntimeException("Directory iterator hasn't been defined yet");
-        }
+        $this->checkManager();
 
         $List = [];
         $this->fileSystemManager->rewind();
