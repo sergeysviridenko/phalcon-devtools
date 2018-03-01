@@ -20,13 +20,13 @@
 namespace Phalcon\Devtools\Modules\Core;
 
 /**
- * Phalcon\Devtools\Modules\Core\OptionsInterface
+ * Phalcon\Devtools\Modules\Core\OptionsRegistryInterface
  *
  * Interface for options and data that were generated
  *
  * @package Phalcon\Devtools\Modules\Core
  */
-interface OptionsInterface
+interface OptionsRegistryInterface
 {
     /**
      * Set all options to option container
