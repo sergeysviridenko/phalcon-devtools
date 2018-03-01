@@ -38,6 +38,7 @@ class Configurator
     /**@var Registry */
     private $registry;
 
+    /**@var FileManager */
     private $fileManager;
 
     public function __construct()
