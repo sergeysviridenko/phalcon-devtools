@@ -17,16 +17,39 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Phalcon\Devtools\Modules\Core\FileSystem\Apps;
+namespace Phalcon\Devtools\Modules\Core\FileSystem\Managers;
 
+use Phalcon\Devtools\Modules\Core\Exceptions\RuntimeException;
 use Phalcon\Devtools\Modules\Core\FileSystem\AbstractFileSystem;
 
 /**
- * Phalcon\Devtools\Modules\Core\FileSystem\Apps\ApplicationFileSystem
+ * Phalcon\Devtools\Modules\Core\FileSystem\Managers\FileManager
  *
- * @package Phalcon\Devtools\Modules\Core\FileSystem\Apps
+ * @package Phalcon\Devtools\Modules\Core\FileSystem\Managers
  */
-class ApplicationFileSystem extends AbstractFileSystem
+class FileManager extends AbstractFileSystem
 {
+    /**@var \SplFileInfo*/
+    protected $fileSystemManager = null;
 
+    public function getManager()
+    {
+        if (is_null($this->fileSystemManager)) {
+            throw new RuntimeException("File object hasn't been defined yet");
+        }
+
+        return $this->fileSystemManager;
+    }
+
+    /**
+     * Set new object that handle file
+     */
+    protected function assertManager(string $path)
+    {
+        if (!is_file($path)) {
+            throw new RuntimeException("Path '{$path}' should be a file");
+        }
+
+        $this->fileSystemManager = new \SplFileInfo($path);
+    }
 }

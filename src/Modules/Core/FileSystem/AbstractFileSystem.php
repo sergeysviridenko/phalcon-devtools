@@ -20,7 +20,6 @@
 namespace Phalcon\Devtools\Modules\Core\FileSystem;
 
 use Phalcon\Devtools\Modules\Core\FileSystemInterface;
-use Phalcon\Devtools\Modules\Core\Exceptions\RuntimeException;
 
 /**
  * Phalcon\Devtools\Modules\Core\FileSystem\AbstractFileSystem
@@ -29,107 +28,28 @@ use Phalcon\Devtools\Modules\Core\Exceptions\RuntimeException;
  */
 abstract class AbstractFileSystem implements FileSystemInterface
 {
-    /**@var \DirectoryIterator*/
-    protected $directoryIterator = null;
-
-    /**@var \SplFileInfo*/
-    protected $fileObject = null;
-
-    public function __construct($path = '')
+    public function __construct(string $path = '')
     {
-        if (empty($path)) {
-            return;
-        }
-
-        if (is_dir($path)) {
-            $this->directoryIterator = new \DirectoryIterator($path);
-            return;
-        }
-
-        if (is_file($path)) {
-            $this->fileObject = new \SplFileInfo($path);
+        if (!empty($path)) {
+            $this->assertManager($path);
         }
     }
 
     /**
-     * Create new \SplFileInfo object
+     * Create new object from path
      */
-    public function setFile(string $path)
+    public function setManager(string $path)
     {
-        $this->fileObject = new \SplFileInfo($path);
+        $this->assertManager($path);
     }
 
     /**
-     * Create new \DirectoryIterator object
+     * Get object that has been defined as manager
      */
-    public function setDirectoryIterator(string $path)
-    {
-        $this->directoryIterator = new \DirectoryIterator($path);
-    }
+    abstract public function getManager();
 
     /**
-     * Get all folders and files in directory
-     *
-     * @return array
+     * Set new object that handle directory, file or other
      */
-    public function getFoldersAndFilesList()
-    {
-        return $this->assertAvailableData();
-    }
-
-    /**
-     * Get all folders in directory
-     *
-     * @return array
-     */
-    public function getFoldersList()
-    {
-        return $this->assertAvailableData('folder');
-    }
-
-    /**
-     * Get all files in directory
-     *
-     * @return array
-     */
-    public function getFilesList()
-    {
-        return $this->assertAvailableData('file');
-    }
-
-    /**
-     * @return array
-     */
-    protected function assertAvailableData($neededData = 'all')
-    {
-        if (is_null($this->directoryIterator)) {
-            throw new RuntimeException("Uterator hasn't been defined");
-        }
-
-        $List = [];
-        $this->directoryIterator->rewind();
-
-        while ($this->directoryIterator->valid()) {
-            if ($this->directoryIterator->isDot()) {
-                $this->directoryIterator->next();
-                continue;
-            }
-
-            if ($this->directoryIterator->isDir() && $neededData == 'folder') {
-                $List[] = $this->directoryIterator->getFilename();
-            }
-
-            if ($this->directoryIterator->isFile() && $neededData == 'file') {
-                $List[] = $this->directoryIterator->getFilename();
-            }
-
-            if ($neededData == 'all') {
-                $List[] = $this->directoryIterator->getFilename();
-            }
-
-            $this->directoryIterator->next();
-        }
-
-        return $List;
-    }
+    abstract protected function assertManager(string $path);
 }

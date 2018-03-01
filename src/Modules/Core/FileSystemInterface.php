@@ -28,5 +28,13 @@ namespace Phalcon\Devtools\Modules\Core;
  */
 interface FileSystemInterface
 {
+    /**
+     * Create new object from path
+     */
+    public function setManager(string $path);
 
+    /**
+     * Get object that has been defined as manager
+     */
+    public function getManager();
 }
