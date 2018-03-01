@@ -19,6 +19,8 @@
 
 namespace Phalcon\Devtools\Modules\Publish;
 
+use Phalcon\Loader;
+use Phalcon\DiInterface;
 use Phalcon\Devtools\Modules\Core\AbstractModule;
 
 /**
@@ -30,5 +32,21 @@ use Phalcon\Devtools\Modules\Core\AbstractModule;
  */
 class Module extends AbstractModule
 {
-    
+    /**
+     * Register a specific autoloader for the module
+     */
+    public function registerAutoloaders(DiInterface $di = null)
+    {
+        (new Loader)->registerDirs(
+            [
+                dirname(__FILE__) . '/Controllers',
+            ]
+        )
+        ->register();
+    }
+
+    public function registerServices(DiInterface $di)
+    {
+
+    }
 }
