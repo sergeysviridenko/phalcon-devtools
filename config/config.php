@@ -19,7 +19,7 @@
 
 return [
     'modules' => [//@todo add autoloader
-        'Migration' => 'Phalcon\Devtools\Modules\Migrations',
-        'Publish'   => 'Phalcon\Devtools\Modules\Publish',
+        'migration' => 'Phalcon\Devtools\Modules\Migrations',
+        'publish'   => 'Phalcon\Devtools\Modules\Publish',
     ],
 ];
