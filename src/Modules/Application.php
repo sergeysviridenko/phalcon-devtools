@@ -21,9 +21,13 @@ namespace Phalcon\Devtools\Modules;
 
 use Phalcon\Di;
 use Phalcon\Loader;
-use Phalcon\Devtools\Modules\Core\String\StringColorize;
+use Phalcon\DispatcherInterface;
 use Phalcon\Cli\Console as ConsoleApp;
 use Phalcon\Di\FactoryDefault\Cli as CliDI;
+use Phalcon\Devtools\Modules\Core\Devtools\Version;
+use Phalcon\Devtools\Modules\Core\String\StringColorize;
+use Phalcon\Devtools\Modules\Core\Services\ServiceRegistrationFactory;
+use Phalcon\Devtools\Modules\Core\FileSystem\Managers\DirectoryManager;
 
 /**
  * Phalcon\Devtools\Modules\Application
@@ -38,22 +42,63 @@ class Application
     /**@var Console*/
     private $console;
 
+    /**@var DirectoryManager */
+    private $directoryManager;
+
     public function __construct()
     {
-        $this->di = new CliDI();
-        Di::setDefault($this->di);
+        $this->initialize();
+        $this->registerServices();
 
-        $this->console = new ConsoleApp();
-        $this->console->setDI($this->di);
+        $this->console->registerModules(
+            [
+                'publish' => [
+                    'className' => 'Phalcon\Devtools\Modules\Publish\Module',
+                    'path'      => PTOOLSPATH . '/src/Modules/Publish/Module.php',
+                ],
+            ]
+        );
+
+        $router = $this->di->getShared('router');
+        $router->add(
+            '/publish/:action/:params',
+            [
+                "module" => 'publish',
+                "task"   => 'publish',
+				"action" => 1,
+				"params" => 2,
+			]
+        );
+
+        $this->shouldDelete();
+    }
+
+    protected function shouldDelete()//@todo SHOULD BE DELETED
+    {
+
+//        fwrite(fopen('/home/pdffiller-lenovo510/phalcon-devtools/devtools.log', 'a'), PHP_EOL .$tt. PHP_EOL);
+//        var_dump($tt);die;
     }
 
     public function run(array $argv)
     {
         try {
+            $this->printVendorInfo();
+
             $this->console->handle($this->handleConsoleCommand($argv));
         } catch (\Exception $e) {
             fwrite(STDERR, StringColorize::error('Unknown command "' . $this->getConsoleCommand($argv) . '"'));
         }
+    }
+
+    protected function initialize()
+    {
+        $this->di = new CliDI();
+        $this->console = new ConsoleApp();
+        $this->directoryManager = new DirectoryManager();
+
+        $this->console->setDI($this->di);
+        Di::setDefault($this->di);
     }
 
 
@@ -64,6 +109,7 @@ class Application
 
     /**
      * @return array
+     * //@todo add command parser
      */
     protected function handleConsoleCommand(array $argv)
     {
@@ -91,5 +137,24 @@ class Application
         unset($argv[0]);
 
         return implode(' ', $argv);
+    }
+
+    /**
+     * Register available revices
+     */
+    protected function registerServices()
+    {
+        $register = new ServiceRegistrationFactory($this->di);
+
+        $this->directoryManager->setManager(SERVICES_PATH);
+        foreach ($this->directoryManager->getFoldersList() as $service) {
+            $register->register($service);
+        }
+    }
+
+    protected function printVendorInfo()
+    {
+        $vendor = sprintf('Phalcon DevTools (%s)', Version::get());
+        print PHP_EOL . StringColorize::colorize($vendor, StringColorize::FG_GREEN, StringColorize::AT_BOLD) . PHP_EOL . PHP_EOL;
     }
 }

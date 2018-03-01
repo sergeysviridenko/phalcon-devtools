@@ -19,13 +19,12 @@
 
 namespace Phalcon\Devtools\Modules\Core\FileSystem\Managers;
 
-use Phalcon\Devtools\Modules\Core\Exceptions\RuntimeException;
 use Phalcon\Devtools\Modules\Core\FileSystem\AbstractFileSystem;
 use Phalcon\Devtools\Modules\Core\Exceptions\InvalidArgumentException;
 
 /**
  * Phalcon\Devtools\Modules\Core\FileSystem\Managers\FileManager
- * 
+ *
  * @property \SplFileInfo $fileSystemManager
  *
  * @package Phalcon\Devtools\Modules\Core\FileSystem\Managers
@@ -49,8 +48,15 @@ class FileManager extends AbstractFileSystem
         $this->checkManager();
 
         $fileObject = $this->fileSystemManager->openFile('r');
-        
+
         return $fileObject->fread($this->fileSystemManager->getSize());
+    }
+
+    public function getincludedContentFile()
+    {
+        $this->checkManager();
+
+        return include $this->fileSystemManager->getRealPath();
     }
 
     /**

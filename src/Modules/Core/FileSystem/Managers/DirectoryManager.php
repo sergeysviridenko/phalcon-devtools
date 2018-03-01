@@ -19,8 +19,8 @@
 
 namespace Phalcon\Devtools\Modules\Core\FileSystem\Managers;
 
-use Phalcon\Devtools\Modules\Core\Exceptions\RuntimeException;
 use Phalcon\Devtools\Modules\Core\FileSystem\AbstractFileSystem;
+use Phalcon\Devtools\Modules\Core\Exceptions\InvalidArgumentException;
 
 /**
  * Phalcon\Devtools\Modules\Core\FileSystem\Managers\DirectoryManager
@@ -74,7 +74,7 @@ class DirectoryManager extends AbstractFileSystem
     protected function assertManager(string $path)
     {
         if (!is_dir($path)) {
-            throw new RuntimeException("Path '{$path}' should be a directory");
+            throw new InvalidArgumentException("Path '{$path}' should be a directory");
         }
 
         $this->fileSystemManager = new \DirectoryIterator($path);
