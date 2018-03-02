@@ -17,18 +17,18 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Phalcon\Devtools\Modules\Publish;
+namespace Phalcon\Devtools\Modules\Installer;
 
 use Phalcon\Loader;
 use Phalcon\DiInterface;
 use Phalcon\Devtools\Modules\Core\AbstractModule;
 
 /**
- * Phalcon\Devtools\Modules\Publish\Module
+ * Phalcon\Devtools\Modules\Installer\Module
  *
  * Class to work with migrations module
  *
- * @package Phalcon\Devtools\Modules\Publish
+ * @package Phalcon\Devtools\Modules\Installer
  */
 class Module extends AbstractModule
 {

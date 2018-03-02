@@ -17,32 +17,22 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Phalcon\Devtools\Modules\Core\Options;
+namespace Phalcon\Devtools\Modules\Installer\Options;
+
+use Phalcon\Devtools\Modules\Core\Options\OptionsHandler;
 
 /**
- * Phalcon\Devtools\Modules\Core\Options\OptionsHandler
+ * Phalcon\Devtools\Modules\Installer\Options\InstallerOptionsHandler
  *
- * Class to handle base incomming options and params
+ * Class to specofy options and params for Installer module
  *
- * @package Phalcon\Devtools\Modules\Core\Options
+ * @package Phalcon\Devtools\Modules\Installer\Options
  */
-class OptionsHandler implements OptionsHandlerInterface
+class InstallerOptionsHandler extends OptionsHandler
 {
-    protected $params = [];
-
     public function __construct(array $params)
     {
         $this->setParams($params);
-    }
-
-    /**
-     * Get available param
-     *
-     * @return array
-     */
-    public function getParams()
-    {
-        return $this->params;
     }
 
     /**
@@ -53,29 +43,17 @@ class OptionsHandler implements OptionsHandlerInterface
     public function setParams(array $params)
     {
         $this->setBaseParams($params);
+
+        $this->setDefaultValueForForceParam();
     }
 
     /**
-     * Set base incomming and necessary params
+     * Set default value for force option
      */
-    protected function setBaseParams(array $params)
+    protected function setDefaultValueForForceParam()
     {
-        $this->params = $params;
-
-        $this->setDirectoryParam();
-    }
-
-    /**
-     * Set directory where project is located. Absolute or relative
-     */
-    protected function setDirectoryParam()
-    {
-        if (isset($this->params['directory'])) {
-            $this->params['directory'] = rtrim($this->params['directory'], '\\/');
-            return;
+        if (!isset($this->params['force'])) {
+            $this->params['force'] = false;
         }
-
-        $path = defined('BASE_PATH') ? BASE_PATH : defined('APP_PATH') ? dirname(APP_PATH) : '';
-        $this->params['directory'] = rtrim($path, '\\/');
     }
 }
