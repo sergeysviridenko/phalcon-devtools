@@ -17,16 +17,16 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Phalcon\Devtools\Modules\Core\Services\ServicesList\Registry;
+namespace Phalcon\Devtools\Modules\Core\Services\Services\Registry;
 
 use Phalcon\Registry;
 use Phalcon\DiInterface;
 use Phalcon\Di\ServiceProviderInterface;
 
 /**
- * Phalcon\Devtools\Modules\Core\Services\ServiceList\Registry\ServiceProvider
+ * Phalcon\Devtools\Modules\Core\Services\Service\Registry\ServiceProvider
  *
- * @package Phalcon\Devtools\Modules\Core\Services\ServicesList\Registry
+ * @package Phalcon\Devtools\Modules\Core\Services\Services\Registry
  */
 class ServiceProvider implements ServiceProviderInterface
 {

@@ -13,23 +13,20 @@
   | obtain it through the world-wide-web, please send an email             |
   | to license@phalconphp.com so we can send you a copy immediately.       |
   +------------------------------------------------------------------------+
-  | Authors: Sergii Svyrydenko <sergey.v.sviridenko@gmail.com              |
+  | Authors: Sergii Svyrydenko <sergey.v.sviridenko@gmail.com>             |
   +------------------------------------------------------------------------+
 */
 
-namespace Phalcon\Devtools\Modules\Core\Services\ServicesList\Logger;
+namespace Phalcon\Devtools\Modules\Core\Services\Services\EventsManager;
 
-use Phalcon\Logger;
 use Phalcon\DiInterface;
-use Phalcon\Logger\Adapter\Stream;
+use Phalcon\Events\Manager as EventsManager;
 use Phalcon\Di\ServiceProviderInterface;
-use Phalcon\Logger\Adapter\File as FileLogger;
-use Phalcon\Logger\Formatter\Line as LineFormatter;
 
 /**
- * Phalcon\Devtools\Modules\Core\Services\ServicesList\Logger\ServiceProvider
+ * Phalcon\Devtools\Modules\Core\Services\Services\EventsManager\ServiceProvider
  *
- * @package Phalcon\Devtools\Modules\Core\Services\ServicesList\Logger
+ * @package Phalcon\Devtools\Modules\Core\Services\Services\EventsManager
  */
 class ServiceProvider implements ServiceProviderInterface
 {
@@ -40,6 +37,8 @@ class ServiceProvider implements ServiceProviderInterface
      */
     public function register(DiInterface $di)
     {
-        //@todo add logger
+        $eventManager = $di->getShared('eventsManager');
+
+        $eventManager->enablePriorities(true);
     }
 }

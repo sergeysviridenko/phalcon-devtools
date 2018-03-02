@@ -20,6 +20,7 @@
 namespace Phalcon\Devtools\Modules\Core\Services;
 
 use Phalcon\DiInterface;
+use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Devtools\Modules\Core\Exceptions\InvalidArgumentException;
 
 /**
@@ -39,12 +40,14 @@ class ServiceRegistrationFactory
 
     public function register(string $service)
     {
-        $class = __NAMESPACE__ . "\\ServicesList\\$service\\ServiceProvider";
+        $class = __NAMESPACE__ . "\\Services\\$service\\ServiceProvider";
 
         if (!class_exists($class)) {
             throw new InvalidArgumentException("Class '$class' was't defined yet");
         }
 
-        (new $class)->register($this->di);
+        if ($class instanceof ServiceProviderInterface) {
+            (new $class)->register($this->di);
+        }
     }
 }

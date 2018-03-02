@@ -15,16 +15,16 @@
  +------------------------------------------------------------------------+
 */
 
-namespace Phalcon\Devtools\Modules\Core\Services\ServicesList\Dispatcher;
+namespace Phalcon\Devtools\Modules\Core\Services\Services\Dispatcher;
 
 use Phalcon\DiInterface;
 use Phalcon\Cli\Dispatcher;
 use Phalcon\Di\ServiceProviderInterface;
 
 /**
- * Phalcon\Devtools\Modules\Core\Services\ServicesList\Dispatcher\ServiceProvider
+ * Phalcon\Devtools\Modules\Core\Services\Services\Dispatcher\ServiceProvider
  *
- * @package Phalcon\Devtools\Modules\Core\Services\ServicesList\Dispatcher
+ * @package Phalcon\Devtools\Modules\Core\Services\Services\Dispatcher
  */
 class ServiceProvider implements ServiceProviderInterface
 {
