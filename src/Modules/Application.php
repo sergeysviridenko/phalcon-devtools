@@ -77,7 +77,7 @@ class Application
     {
 
 //        fwrite(fopen('/home/pdffiller-lenovo510/phalcon-devtools/devtools.log', 'a'), PHP_EOL .$tt. PHP_EOL);
-//        var_dump($tt);die;
+//        var_dump($this->di);die;
     }
 
     public function run(array $argv)
@@ -148,7 +148,9 @@ class Application
 
         $this->directoryManager->setManager(SERVICES_PATH);
         foreach ($this->directoryManager->getFoldersList() as $service) {
-            $serviceManager->register($service);
+            if (!$serviceManager->register($service)) {
+                throw new \RuntimeException("Service {$service} can't be registered");
+            }
         }
     }
 

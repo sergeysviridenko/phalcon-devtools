@@ -38,6 +38,12 @@ class ServiceManager
         $this->di = $di;
     }
 
+    /**
+     * Register service
+     *
+     * @throws InvalidArgumentException
+     * @return bool
+     */
     public function register(string $service)
     {
         $class = __NAMESPACE__ . "\\Services\\$service\\ServiceProvider";
@@ -46,8 +52,13 @@ class ServiceManager
             throw new InvalidArgumentException("Class '$class' was't defined yet");
         }
 
+        $class = new $class;
         if ($class instanceof ServiceProviderInterface) {
-            (new $class)->register($this->di);
+            $class->register($this->di);
+
+            return true;
         }
+
+        return false;
     }
 }
