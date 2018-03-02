@@ -19,7 +19,6 @@
 
 namespace Phalcon\Devtools\Modules\Core\Options;
 
-use Phalcon\Devtools\Modules\Core\OptionsRegistryInterface;
 use Phalcon\Devtools\Modules\Core\Exceptions\InvalidArgumentException;
 
 /**

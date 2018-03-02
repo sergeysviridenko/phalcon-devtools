@@ -17,14 +17,14 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Phalcon\Devtools\Modules\Core;
+namespace Phalcon\Devtools\Modules\Core\Options;
 
 /**
- * Phalcon\Devtools\Modules\Core\OptionsRegistryInterface
+ * Phalcon\Devtools\Modules\Core\Options\OptionsRegistryInterface
  *
  * Interface for options and data that were generated
  *
- * @package Phalcon\Devtools\Modules\Core
+ * @package Phalcon\Devtools\Modules\Core\Options
  */
 interface OptionsRegistryInterface
 {
