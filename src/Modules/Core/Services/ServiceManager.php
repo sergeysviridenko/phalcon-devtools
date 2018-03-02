@@ -24,11 +24,11 @@ use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Devtools\Modules\Core\Exceptions\InvalidArgumentException;
 
 /**
- * Phalcon\Devtools\Modules\Core\Services\ServiceRegistrationFactory
+ * Phalcon\Devtools\Modules\Core\Services\ServiceManager
  *
  * @package Phalcon\Devtools\Modules\Core\Services
  */
-class ServiceRegistrationFactory
+class ServiceManager
 {
     /**@var DiInterface */
     protected $di;

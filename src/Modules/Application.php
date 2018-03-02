@@ -26,7 +26,7 @@ use Phalcon\Cli\Console as ConsoleApp;
 use Phalcon\Di\FactoryDefault\Cli as CliDI;
 use Phalcon\Devtools\Modules\Core\Devtools\Version;
 use Phalcon\Devtools\Modules\Core\String\StringColorize;
-use Phalcon\Devtools\Modules\Core\Services\ServiceRegistrationFactory;
+use Phalcon\Devtools\Modules\Core\Services\ServiceManager;
 use Phalcon\Devtools\Modules\Core\FileSystem\Managers\DirectoryManager;
 
 /**
@@ -144,11 +144,11 @@ class Application
      */
     protected function registerServices()
     {
-        $register = new ServiceRegistrationFactory($this->di);
+        $serviceManager = new ServiceManager($this->di);
 
         $this->directoryManager->setManager(SERVICES_PATH);
         foreach ($this->directoryManager->getFoldersList() as $service) {
-            $register->register($service);
+            $serviceManager->register($service);
         }
     }
 
