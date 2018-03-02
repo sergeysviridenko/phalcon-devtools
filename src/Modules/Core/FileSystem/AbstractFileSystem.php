@@ -19,7 +19,6 @@
 
 namespace Phalcon\Devtools\Modules\Core\FileSystem;
 
-use Phalcon\Devtools\Modules\Core\FileSystem\FileSystemInterface;
 use Phalcon\Devtools\Modules\Core\Exceptions\RuntimeException;
 
 /**

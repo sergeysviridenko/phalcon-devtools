@@ -17,18 +17,18 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Phalcon\Devtools\Modules\Core;
+namespace Phalcon\Devtools\Modules\Core\Module;
 
-use Phalcon\Devtools\Modules\Core\ModuleInterface;
+use Phalcon\Mvc\ModuleDefinitionInterface;
 
 /**
- * Phalcon\Devtools\Modules\Core\AbstractModule
+ * Phalcon\Devtools\Modules\Core\Module\ModuleInterface
  *
- * Base class to work with modules
+ * Base interface to work with modules
  *
- * @package Phalcon\Devtools\Modules\Core
+ * @package Phalcon\Devtools\Modules\Core\Module
  */
-abstract class AbstractModule implements ModuleInterface
+interface ModuleInterface extends ModuleDefinitionInterface
 {
-    
+
 }
