@@ -83,7 +83,7 @@ class DirectoryManager extends AbstractFileSystem
     /**
      * @return array
      */
-    protected function assertAvailableData($neededData = 'all')
+    protected function assertAvailableData(string $neededData = 'all')
     {
         $this->checkManager();
 
