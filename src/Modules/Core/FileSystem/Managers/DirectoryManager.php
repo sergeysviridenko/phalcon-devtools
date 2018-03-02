@@ -87,7 +87,7 @@ class DirectoryManager extends AbstractFileSystem
     {
         $this->checkManager();
 
-        $List = [];
+        $list = [];
         $this->fileSystemManager->rewind();
 
         while ($this->fileSystemManager->valid()) {
@@ -97,20 +97,20 @@ class DirectoryManager extends AbstractFileSystem
             }
 
             if ($this->fileSystemManager->isDir() && $neededData == 'folder') {
-                $List[] = $this->fileSystemManager->getFilename();
+                $list[] = $this->fileSystemManager->getFilename();
             }
 
             if ($this->fileSystemManager->isFile() && $neededData == 'file') {
-                $List[] = $this->fileSystemManager->getFilename();
+                $list[] = $this->fileSystemManager->getFilename();
             }
 
             if ($neededData == 'all') {
-                $List[] = $this->fileSystemManager->getFilename();
+                $list[] = $this->fileSystemManager->getFilename();
             }
 
             $this->fileSystemManager->next();
         }
 
-        return $List;
+        return $list;
     }
 }
