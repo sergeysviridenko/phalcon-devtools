@@ -17,20 +17,20 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Phalcon\Devtools\Modules\Core;
+namespace Phalcon\Devtools\Modules\Core\Migration;
 
-use Phalcon\Devtools\Modules\Core\OptionsInterface;
+use Phalcon\Devtools\Modules\Core\Options\OptionsRegistryInterface;
 
 /**
- * Phalcon\Devtools\Modules\Core\MigrationsInterface
+ * Phalcon\Devtools\Modules\Core\Migration\MigrationsInterface
  *
  * Migration interface
  *
- * @package Phalcon\Devtools\Modules\Core
+ * @package Phalcon\Devtools\Modules\Core\Migration
  */
 interface MigrationsInterface
 {
     public function execute();
 
-    public function setOptions(OptionsInterface $options);
+    public function setOptions(OptionsRegistryInterface $options);
 }

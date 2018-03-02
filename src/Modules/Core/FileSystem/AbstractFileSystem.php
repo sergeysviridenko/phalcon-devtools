@@ -19,7 +19,7 @@
 
 namespace Phalcon\Devtools\Modules\Core\FileSystem;
 
-use Phalcon\Devtools\Modules\Core\FileSystemInterface;
+use Phalcon\Devtools\Modules\Core\FileSystem\FileSystemInterface;
 use Phalcon\Devtools\Modules\Core\Exceptions\RuntimeException;
 
 /**
@@ -30,7 +30,7 @@ use Phalcon\Devtools\Modules\Core\Exceptions\RuntimeException;
 abstract class AbstractFileSystem implements FileSystemInterface
 {
     protected $fileSystemManager = null;
-    
+
     public function __construct(string $path = '')
     {
         if (!empty($path)) {

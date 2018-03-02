@@ -17,14 +17,14 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Phalcon\Devtools\Modules\Core;
+namespace Phalcon\Devtools\Modules\Core\FileSystem;
 
 /**
- * Phalcon\Devtools\Modules\Core\FileSystemInterface
+ * Phalcon\Devtools\Modules\Core\FileSystem\FileSystemInterface
  *
  * Base interface to work with files and folders
  *
- * @package Phalcon\Devtools\Modules\Core
+ * @package Phalcon\Devtools\Modules\Core\FileSystem
  */
 interface FileSystemInterface
 {
