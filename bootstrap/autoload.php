@@ -55,7 +55,7 @@ defined('DS') || define('DS', DIRECTORY_SEPARATOR);
 /** @const SERVICES_PATH The path to the Phalcon Developers Tools services. */
 defined('SERVICES_PATH') || define(
     'SERVICES_PATH',
-    PTOOLSPATH . DS . 'src' . DS .'Modules' . DS . 'Core' . DS . 'Services' . DS . 'ServicesList');
+    PTOOLSPATH . DS . 'src' . DS .'Modules' . DS . 'Core' . DS . 'Services' . DS . 'Services');
 
 /** @const ENV_PRODUCTION Application production stage. */
 defined('ENV_PRODUCTION') || define('ENV_PRODUCTION', 'production');
@@ -85,8 +85,7 @@ defined('COMPATIBLE_VERSION') || define('COMPATIBLE_VERSION', 3020040);
  * Register Devtools classes.
  */
 $loader = new Loader();
-$loader
-    ->registerDirs([
+$loader->registerDirs([
     PTOOLSPATH . '/src/Modules/Core/Controllers',
 //    PTOOLSPATH . '/src/Modules/Publish/Controllers',
 ])

@@ -40,5 +40,6 @@ class ServiceProvider implements ServiceProviderInterface
         $dispatcher->setTaskSuffix("");
         $dispatcher->setActionSuffix("");
         $dispatcher->setDefaultTask("help");
+        $dispatcher->setDefaultAction("basic");
     }
 }

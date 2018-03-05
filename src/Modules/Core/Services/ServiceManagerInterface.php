@@ -17,12 +17,22 @@
   +------------------------------------------------------------------------+
 */
 
-use Phalcon\Cli\Task;
+namespace Phalcon\Devtools\Modules\Core\Services;
 
-class Publish extends Task
+use Phalcon\Devtools\Modules\Core\Exceptions\InvalidArgumentException;
+
+/**
+ * Phalcon\Devtools\Modules\Core\Services\ServiceManagerInterface
+ *
+ * @package Phalcon\Devtools\Modules\Core\Services
+ */
+interface ServiceManagerInterface
 {
-    public function basic()
-    {
-        echo 'Publish content will be here' . PHP_EOL;
-    }
+    /**
+     * Register service
+     *
+     * @throws InvalidArgumentException
+     * @return bool
+     */
+    public function register(string $service);
 }

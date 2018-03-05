@@ -17,12 +17,35 @@
   +------------------------------------------------------------------------+
 */
 
-use Phalcon\Cli\Task;
+namespace Phalcon\Devtools\Modules\Core\Commands;
 
-class Publish extends Task
+/**
+ * Phalcon\Devtools\Modules\Core\Commands\CommandManager
+ *
+ * @package Phalcon\Devtools\Modules\Core\Commands
+ */
+class CommandManager implements CommandManagerInterface
 {
-    public function basic()
+    /**@var array*/
+    private $commands = [];
+
+    /**
+     * Add command to commands registry
+     *
+     * @return bool
+     */
+    public function addNewCommand()
     {
-        echo 'Publish content will be here' . PHP_EOL;
+
+    }
+
+    /**
+     * Get added commands
+     *
+     * @return array
+     */
+    public function getCommands()
+    {
+        return $this->commands;
     }
 }

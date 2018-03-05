@@ -21,7 +21,7 @@ use Phalcon\Cli\Task;
 
 class Help extends Task
 {
-    public function main()
+    public function basic()
     {
         echo 'Help content will be here' . PHP_EOL;
     }

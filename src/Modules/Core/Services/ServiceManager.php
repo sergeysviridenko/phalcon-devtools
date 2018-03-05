@@ -28,7 +28,7 @@ use Phalcon\Devtools\Modules\Core\Exceptions\InvalidArgumentException;
  *
  * @package Phalcon\Devtools\Modules\Core\Services
  */
-class ServiceManager
+class ServiceManager implements ServiceManagerInterface
 {
     /**@var DiInterface */
     protected $di;
