@@ -47,7 +47,7 @@ class Application
 
     public function __construct()
     {
-        $this->initialize();
+        $this->build();
         $this->registerServices();
 
         $this->console->registerModules(
@@ -91,7 +91,7 @@ class Application
         }
     }
 
-    protected function initialize()
+    protected function build()
     {
         $this->di = new CliDI();
         $this->console = new ConsoleApp();
