@@ -28,13 +28,13 @@ use Phalcon\Devtools\Modules\Core\Exceptions\CommandsException;
  */
 abstract class AbstractCommand implements CommandInterface
 {
-    /** @var string*/
+    /** @var string */
     protected $commandName = '';
 
-    /** @var string*/
+    /** @var string */
     protected $commandDescription = '';
 
-    /**@var array*/
+    /** @var array */
     protected $params = [];
 
     /**
@@ -79,7 +79,7 @@ abstract class AbstractCommand implements CommandInterface
     }
 
     /**
-     *@param int $amountSymbolToDescription
+     * @param int $amountSymbolToDescription
      * @return string
      */
     public function getParamAsFormatedString(string $paramName, int $amountSymbolToDescription = 20)
