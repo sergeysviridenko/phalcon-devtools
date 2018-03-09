@@ -19,7 +19,9 @@
 
 namespace Phalcon\Devtools\Modules\Migrations;
 
-use Phalcon\Devtools\Modules\Core\AbstractModule;
+use Phalcon\Loader;
+use Phalcon\DiInterface;
+use Phalcon\Devtools\Modules\Core\Module\AbstractModule;
 
 /**
  * Phalcon\Devtools\Modules\Migrations\Module
@@ -30,5 +32,32 @@ use Phalcon\Devtools\Modules\Core\AbstractModule;
  */
 class Module extends AbstractModule
 {
-    
+    /**
+     * Register a specific autoloader for the module
+     */
+    public function registerAutoloaders(DiInterface $di = null)
+    {
+        $this->registerDir();
+        $this->registerRoute();
+    }
+
+    public function registerServices(DiInterface $di)
+    {
+
+    }
+
+    protected function registerDir()
+    {
+        (new Loader)->registerDirs(
+            [
+                dirname(__FILE__) . '/Controllers',
+            ]
+        )
+            ->register();
+    }
+
+    protected function registerRoute()
+    {
+
+    }
 }
