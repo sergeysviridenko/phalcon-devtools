@@ -20,32 +20,11 @@
 namespace Phalcon\Devtools\Modules\Core\Commands;
 
 /**
- * Phalcon\Devtools\Modules\Core\Commands\CommandManager
+ * Phalcon\Devtools\Modules\Core\Commands\AbstractCommandsManager
  *
  * @package Phalcon\Devtools\Modules\Core\Commands
  */
-class CommandManager implements CommandManagerInterface
+abstract class AbstractCommandsManager implements CommandsManagerInterface
 {
-    /**@var array*/
-    private $commands = [];
-
-    /**
-     * Add command to commands registry
-     *
-     * @return bool
-     */
-    public function addNewCommand()
-    {
-
-    }
-
-    /**
-     * Get added commands
-     *
-     * @return array
-     */
-    public function getCommands()
-    {
-        return $this->commands;
-    }
+    
 }

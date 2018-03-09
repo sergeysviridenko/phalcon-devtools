@@ -20,11 +20,11 @@
 namespace Phalcon\Devtools\Modules\Core\Commands;
 
 /**
- * Phalcon\Devtools\Modules\Core\Commands\CommandManagerInterface
+ * Phalcon\Devtools\Modules\Core\Commands\CommandsManagerInterface
  *
  * @package Phalcon\Devtools\Modules\Core\Commands
  */
-interface CommandManagerInterface
+interface CommandsManagerInterface
 {
     /**
      * Add command to commands registry
