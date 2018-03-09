@@ -19,15 +19,39 @@
 
 namespace Phalcon\Devtools\Modules\Core\Commands\Manager;
 
+use Phalcon\Devtools\Modules\Core\Commands\CommandInterface;
+use Phalcon\Devtools\Modules\Core\Exceptions\InvalidArgumentException;
+
 /**
- * Phalcon\Devtools\Modules\Core\Commands\Manager\ManagerInterface
+ * Phalcon\Devtools\Modules\Core\Commands\Manager\CommandsManagerInterface
  *
  * @package Phalcon\Devtools\Modules\Core\Commands\Manager
  */
-interface ManagerInterface
+interface CommandsManagerInterface
 {
+    public function __construct(array $commands);
+    
     /**
      *@return array
      */
     public function getCommands();
+
+    /**
+     *@return bool
+     */
+    public function hasCommand(string $commandName);
+
+    /**
+     *@param string
+     *
+     *@return CommandInterface
+     *
+     *@throws InvalidArgumentException
+     */
+    public function getCommand(string $commandName);
+
+    /**
+     * @param CommandInterface
+     */
+    public function setCommand(CommandInterface $command);
 }

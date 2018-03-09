@@ -20,13 +20,14 @@
 namespace Phalcon\Devtools\Modules\Core\Commands\Manager;
 
 use Phalcon\Devtools\Modules\Core\Commands\CommandInterface;
+use Phalcon\Devtools\Modules\Core\Exceptions\InvalidArgumentException;
 
 /**
- * Phalcon\Devtools\Modules\Core\Commands\CommandManager\AbstractManager
+ * Phalcon\Devtools\Modules\Core\Commands\Manager\CommandsManager
  *
- * @package Phalcon\Devtools\Modules\Core\Commands\CommandManager
+ * @package Phalcon\Devtools\Modules\Core\Commands\Manager
  */
-class AbstractCommandsManager implements ManagerInterface
+class CommandsManager implements CommandsManagerInterface
 {
     /**@var array*/
     private $commands = [];
@@ -43,7 +44,43 @@ class AbstractCommandsManager implements ManagerInterface
     {
         return $this->commands;
     }
-    
+
+    /**
+     *@return bool
+     */
+    public function hasCommand(string $commandName)
+    {
+        if (isset($this->commands[$commandName])) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     *@param string
+     *
+     *@return CommandInterface
+     *
+     *@throws InvalidArgumentException
+     */
+    public function getCommand(string $commandName)
+    {
+        if (isset($this->commands[$commandName])) {
+            return $this->commands[$commandName];
+        }
+
+        throw new InvalidArgumentException("Command {$commandName} hasn't been defined yet");
+    }
+
+    /**
+     * @param CommandInterface
+     */
+    public function setCommand(CommandInterface $command)
+    {
+        $this->commands[$command->getCommandName()] = $command;
+    }
+
     /**
      * Initialize all commands available in devtools
      */
