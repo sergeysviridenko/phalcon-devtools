@@ -19,6 +19,8 @@
 
 namespace Phalcon\Devtools\Modules\Core\Module;
 
+use Phalcon\DiInterface;
+
 /**
  * Phalcon\Devtools\Modules\Core\Module\AbstractModule
  *
@@ -28,5 +30,7 @@ namespace Phalcon\Devtools\Modules\Core\Module;
  */
 abstract class AbstractModule implements ModuleInterface
 {
-    
+    abstract public function registerAutoloaders(DiInterface $di = null);
+
+    abstract public function registerServices(DiInterface $di);
 }
