@@ -18,8 +18,18 @@
 */
 
 return [
-    'modules' => [//@todo add autoloader
-        'migration' => 'Phalcon\Devtools\Modules\Migrations',
-        'publish'   => 'Phalcon\Devtools\Modules\Publish',
+    'modules' => [
+        'publish'   => [
+            'className' => 'Phalcon\Devtools\Modules\Installer\Module',
+            'path'      => PTOOLSPATH . '/src/Modules/Installer/',
+        ],
+        'migration' => [
+            'className' => 'Phalcon\Devtools\Modules\Migrations\Module',
+            'path'      => PTOOLSPATH . '/src/Modules/Migrations/',
+        ],
     ],
+    'commands' => [
+        'help' => Phalcon\Devtools\Modules\Core\Commands\HelpCommand::class,
+        'info' => Phalcon\Devtools\Modules\Information\Commands\InfoCommand::class, 
+    ]
 ];
