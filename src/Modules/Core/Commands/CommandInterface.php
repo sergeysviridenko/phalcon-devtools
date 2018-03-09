@@ -27,12 +27,12 @@ namespace Phalcon\Devtools\Modules\Core\Commands;
 interface CommandInterface
 {
     /**
-     *@return string
+     * @return string
      */
     public function getName();
 
     /**
-     *@return string
+     * @return string
      */
     public function getDescription();
 
