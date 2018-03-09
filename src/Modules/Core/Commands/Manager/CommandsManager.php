@@ -78,7 +78,7 @@ class CommandsManager implements CommandsManagerInterface
      */
     public function setCommand(CommandInterface $command)
     {
-        $this->commands[$command->getCommandName()] = $command;
+        $this->commands[$command->getName()] = $command;
     }
 
     /**
