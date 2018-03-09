@@ -17,14 +17,42 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Phalcon\Devtools\Modules\Core\Commands;
+namespace Phalcon\Devtools\Modules\Core\Commands\Manager;
+
+use Phalcon\Devtools\Modules\Core\Commands\CommandInterface;
 
 /**
- * Phalcon\Devtools\Modules\Core\Commands\AbstractCommandsManager
+ * Phalcon\Devtools\Modules\Core\Commands\CommandManager\AbstractManager
  *
- * @package Phalcon\Devtools\Modules\Core\Commands
+ * @package Phalcon\Devtools\Modules\Core\Commands\CommandManager
  */
-abstract class AbstractCommandsManager implements CommandsManagerInterface
+class AbstractCommandsManager implements ManagerInterface
 {
+    /**@var array*/
+    private $commands = [];
+
+    public function __construct(array $commands)
+    {
+        $this->initializeCommand($commands);
+    }
+
+    /**
+     *@return array
+     */
+    public function getCommands()
+    {
+        return $this->commands;
+    }
     
+    /**
+     * Initialize all commands available in devtools
+     */
+    protected function initializeCommand(array $commands)
+    {
+        foreach ($commands as $command => $class) {
+            if (is_object($class) && $class instanceof CommandInterface) {
+                $this->commands[$command] = new $class;
+            }
+        }
+    }
 }

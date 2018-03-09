@@ -17,26 +17,17 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Phalcon\Devtools\Modules\Core\Commands;
+namespace Phalcon\Devtools\Modules\Core\Commands\Manager;
 
 /**
- * Phalcon\Devtools\Modules\Core\Commands\CommandsManagerInterface
+ * Phalcon\Devtools\Modules\Core\Commands\Manager\ManagerInterface
  *
- * @package Phalcon\Devtools\Modules\Core\Commands
+ * @package Phalcon\Devtools\Modules\Core\Commands\Manager
  */
-interface CommandsManagerInterface
+interface ManagerInterface
 {
     /**
-     * Add command to commands registry
-     *
-     * @return bool
-     */
-    public function addNewCommand();
-
-    /**
-     * Get added commands
-     *
-     * @return array
+     *@return array
      */
     public function getCommands();
 }
