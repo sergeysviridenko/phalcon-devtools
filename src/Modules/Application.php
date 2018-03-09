@@ -49,6 +49,7 @@ class Application
     {
         $this->build();
         $this->registerServices();
+        $this->registerModules();
 
         $this->console->registerModules(
             [
@@ -63,7 +64,7 @@ class Application
         $router->add(
             '/publish/:action/:params',
             [
-                "module" => 'publish',
+                "module" => 'install',
                 "task"   => 'publish',
 				"action" => 1,
 				"params" => 2,
@@ -75,7 +76,7 @@ class Application
 
     protected function shouldDelete()//@todo SHOULD BE DELETED
     {
-
+//var_dump($this->console);die;
 //        fwrite(fopen('/home/pdffiller-lenovo510/phalcon-devtools/devtools.log', 'a'), PHP_EOL .$tt. PHP_EOL);
 //        var_dump($this->di);die;
     }
@@ -98,6 +99,7 @@ class Application
         $this->directoryManager = new DirectoryManager();
 
         $this->console->setDI($this->di);
+        $this->di->setShared('app', $this->console);
         Di::setDefault($this->di);
     }
 
@@ -158,5 +160,23 @@ class Application
     {
         $vendor = sprintf('Phalcon DevTools (%s)', Version::get());
         print PHP_EOL . StringColorize::colorize($vendor, StringColorize::FG_GREEN, StringColorize::AT_BOLD) . PHP_EOL . PHP_EOL;
+    }
+
+    /**
+     * register available modules
+     */
+    protected function registerModules()
+    {
+        $modulesList = include PTOOLSPATH . '/config/config.php';
+        $modulesList = $modulesList['modules'];//@todo get it from config as method argument
+
+
+        foreach ($modulesList as $moduleName => $moduleConfig) {
+            $module[$moduleName]['className'] = $moduleConfig['className'];
+            $module[$moduleName]['path'] = $moduleConfig['path'] . 'Module.php';
+
+            $this->console->registerModules([$module]);
+            (new $moduleConfig['className'])->registerAutoloaders($this->di);
+        }
     }
 }
