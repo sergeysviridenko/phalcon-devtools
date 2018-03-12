@@ -17,12 +17,32 @@
   +------------------------------------------------------------------------+
 */
 
+use Phalcon\Di;
 use Phalcon\Cli\Task;
+use Phalcon\Application;
+use Phalcon\Devtools\Modules\Core\Exceptions\InvalidParameterException;
 
 class Help extends Task
 {
+    /**@var Application*/
+    private $app;
+
     public function basic()
     {
+        $app = $this->getApp($this->getDI());
+        var_dump($app);die;
+//        var_dump(get_class_methods($this));die;
         echo 'Help content will be here' . PHP_EOL;
+    }
+
+    private function getApp(Di $di)
+    {
+        $app = $di->getShared('app');
+
+        if (is_object($app) && $app instanceof Application) {
+            return $app;
+        }
+
+        throw new InvalidParameterException('Class ' . __CLASS__ . ' tried to use invalid application object');
     }
 }

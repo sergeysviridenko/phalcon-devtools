@@ -87,8 +87,8 @@ defined('COMPATIBLE_VERSION') || define('COMPATIBLE_VERSION', 3020040);
 $loader = new Loader();
 $loader->registerDirs([
     PTOOLSPATH . '/src/Modules/Core/Controllers',
-//    PTOOLSPATH . '/src/Modules/Publish/Controllers',
-])
+//    PTOOLSPATH . '/src/Modules/Installer/Controllers',
+    ])
     ->registerNamespaces([
         'Phalcon\Devtools'  => PTOOLSPATH . DS . 'src' . DS,
     ])

@@ -19,7 +19,7 @@
 */
 
 use Phalcon\Devtools\Modules\Application;
-use Phalcon\Devtools\Modules\Core\String\StringColorize;
+use Phalcon\Devtools\Modules\Core\Strings\StringColorize;
 use Phalcon\Exception as PhalconException;
 
 try {
