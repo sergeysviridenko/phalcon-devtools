@@ -38,6 +38,21 @@ class CommandsManager implements CommandsManagerInterface
     }
 
     /**
+     *@param string
+     *
+     *@return CommandInterface
+     *@throws InvalidArgumentException
+     */
+    public function getCommand(string $commandName)
+    {
+        if (isset($this->commands[$commandName])) {
+            return $this->commands[$commandName];
+        }
+
+        throw new InvalidArgumentException("Command {$commandName} hasn't been defined yet");
+    }
+
+    /**
      *@return array
      */
     public function getCommands()
@@ -55,22 +70,6 @@ class CommandsManager implements CommandsManagerInterface
         }
 
         return false;
-    }
-
-    /**
-     *@param string
-     *
-     *@return CommandInterface
-     *
-     *@throws InvalidArgumentException
-     */
-    public function getCommand(string $commandName)
-    {
-        if (isset($this->commands[$commandName])) {
-            return $this->commands[$commandName];
-        }
-
-        throw new InvalidArgumentException("Command {$commandName} hasn't been defined yet");
     }
 
     /**

@@ -30,6 +30,14 @@ use Phalcon\Devtools\Modules\Core\Exceptions\InvalidArgumentException;
 interface CommandsManagerInterface
 {
     public function __construct(array $commands);
+
+    /**
+     *@param string
+     *
+     *@return CommandInterface
+     *@throws InvalidArgumentException
+     */
+    public function getCommand(string $commandName);
     
     /**
      *@return array
@@ -40,15 +48,6 @@ interface CommandsManagerInterface
      *@return bool
      */
     public function hasCommand(string $commandName);
-
-    /**
-     *@param string
-     *
-     *@return CommandInterface
-     *
-     *@throws InvalidArgumentException
-     */
-    public function getCommand(string $commandName);
 
     /**
      * @param CommandInterface
