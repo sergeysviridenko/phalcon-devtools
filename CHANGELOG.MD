@@ -11,5 +11,5 @@ To see what we changed in particular framework branch refer to the relevant chan
 - [**`3.2.x`**](CHANGELOG-3.2.md)
 - [**`3.1.x`**](CHANGELOG-3.1.md)
 - [**`3.0.x`**](CHANGELOG-3.0.md)
-- [**`2.0.x`**](CHANGELOG-2.0.md)
+- [**`2.0.x`**](CHANGELOG-2.x.md)
 - [**`1.x.x`**](CHANGELOG-1.x.md)
