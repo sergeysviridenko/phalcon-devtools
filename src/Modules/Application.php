@@ -25,7 +25,7 @@ use Phalcon\DispatcherInterface;
 use Phalcon\Cli\Console as ConsoleApp;
 use Phalcon\Di\FactoryDefault\Cli as CliDI;
 use Phalcon\Devtools\Modules\Core\Devtools\Version;
-use Phalcon\Devtools\Modules\Core\String\StringColorize;
+use Phalcon\Devtools\Modules\Core\Strings\StringColorize;
 use Phalcon\Devtools\Modules\Core\Services\ServiceManager;
 use Phalcon\Devtools\Modules\Core\FileSystem\Managers\DirectoryManager;
 
