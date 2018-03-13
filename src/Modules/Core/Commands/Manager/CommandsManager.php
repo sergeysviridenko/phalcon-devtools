@@ -29,19 +29,24 @@ use Phalcon\Devtools\Modules\Core\Exceptions\InvalidArgumentException;
  */
 class CommandsManager implements CommandsManagerInterface
 {
-    /**@var array*/
-    private $commands = [];
+    /** @var array */
+    private $commands;
 
     public function __construct(array $commands)
     {
-        $this->initializeCommand($commands);
+        $this->initializeCommands($commands);
+    }
+
+    public function setCommands(array $commands)
+    {
+        $this->initializeCommands($commands);
     }
 
     /**
-     *@param string
+     * @param string
      *
-     *@return CommandInterface
-     *@throws InvalidArgumentException
+     * @return CommandInterface
+     * @throws InvalidArgumentException
      */
     public function getCommand(string $commandName)
     {
@@ -53,7 +58,7 @@ class CommandsManager implements CommandsManagerInterface
     }
 
     /**
-     *@return array
+     * @return array
      */
     public function getCommands()
     {
@@ -61,7 +66,7 @@ class CommandsManager implements CommandsManagerInterface
     }
 
     /**
-     *@return bool
+     * @return bool
      */
     public function hasCommand(string $commandName)
     {
@@ -82,12 +87,16 @@ class CommandsManager implements CommandsManagerInterface
 
     /**
      * Initialize all commands available in devtools
+     *
+     * @param array $commands
      */
-    protected function initializeCommand(array $commands)
+    protected function initializeCommands(array $commands)
     {
-        foreach ($commands as $command => $class) {
-            if (is_object($class) && $class instanceof CommandInterface) {
-                $this->commands[$command] = new $class;
+        $this->commands = [];
+
+        foreach ($commands as $command => $className) {
+            if (($class = new $className()) instanceof CommandInterface) {
+                $this->commands[$command] = $class;
             }
         }
     }
