@@ -27,9 +27,13 @@ return [
             'className' => 'Phalcon\Devtools\Modules\Migrations\Module',
             'path'      => PTOOLSPATH . '/src/Modules/Migrations/',
         ],
+        'info' => [
+            'className' => 'Phalcon\Devtools\Modules\Information\Module',
+            'path'      => PTOOLSPATH . '/src/Modules/Information/',
+        ],
     ],
     'commands' => [
         'help' => Phalcon\Devtools\Modules\Core\Commands\HelpCommand::class,
-        'info' => Phalcon\Devtools\Modules\Information\Commands\InfoCommand::class, 
+        'info' => Phalcon\Devtools\Modules\Information\Commands\InfoCommand::class,
     ]
 ];
