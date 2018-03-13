@@ -68,26 +68,4 @@ abstract class AbstractCommand implements CommandInterface
     {
         return $this->params;
     }
-
-    /**
-     * @param int $amountSymbolToDescription
-     * @return string
-     */
-    public function getNameAndDescriptionAsFormatedString(int $amountSymbolToDescription = 20)
-    {
-        return str_pad($this->getName(), $amountSymbolToDescription) . $this->getDescription();
-    }
-
-    /**
-     * @param int $amountSymbolToDescription
-     * @return string
-     */
-    public function getParamAsFormatedString(string $paramName, int $amountSymbolToDescription = 20)
-    {
-        if (isset($this->params[$paramName])) {
-            return str_pad(array_keys($this->params, $paramName), $amountSymbolToDescription) . $this->params[$paramName];
-        }
-
-        return '';
-    }
 }
