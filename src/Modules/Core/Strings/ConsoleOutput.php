@@ -124,7 +124,7 @@ class ConsoleOutput
     public function colorizeString(string $string,
         array $params = ['foregroundColor' => null, 'supportedAttributes' => null, 'backgroundColor' => null])
     {
-        if ($this->isSupportedShell()) {
+        if (!$this->isSupportedShell()) {
             return $string;
         }
 
@@ -211,8 +211,8 @@ class ConsoleOutput
      */
     protected function addColor(string $colorType, string $colorValue)
     {
-        if (isset($this->$$colorType[$colorValue])) {
-            return "\033[" . $this->$$colorType[$colorValue] . "m";
+        if (isset($this->$colorType[$colorValue])) {
+            return "\033[" . $this->$colorType[$colorValue] . "m";
         }
 
         return '';
