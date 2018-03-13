@@ -17,7 +17,7 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Phalcon\Devtools\Modules\Core\Services\Services\Registry;
+namespace Phalcon\Devtools\Modules\Core\Services\Services\CommandsManager;
 
 use Phalcon\DiInterface;
 use Phalcon\Di\ServiceProviderInterface;
@@ -38,7 +38,7 @@ class ServiceProvider implements ServiceProviderInterface
     public function register(DiInterface $di)
     {
         $defaultConfig = include PTOOLSPATH . '/config/config.php';
-        
+
         $di->setShared(
             'commandsManager',
             function () use ($defaultConfig) {
