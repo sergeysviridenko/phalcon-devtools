@@ -19,30 +19,25 @@
 
 use Phalcon\Di;
 use Phalcon\Cli\Task;
-use Phalcon\Application;
-use Phalcon\Devtools\Modules\Core\Exceptions\InvalidParameterException;
+use Phalcon\Devtools\Modules\Core\Commands\Manager\CommandsManager;
 
 class Help extends Task
 {
-    /**@var Application*/
-    private $app;
-
     public function basic()
     {
-        $app = $this->getApp($this->getDI());
-        var_dump($app);die;
-//        var_dump(get_class_methods($this));die;
-        echo 'Help content will be here' . PHP_EOL;
+        echo $this->getCommandsList();
     }
 
-    private function getApp(Di $di)
+    private function getCommandsList()
     {
-        $app = $di->getShared('app');
+        $commandsManager = $this->getDI()->getShared('commandsManager');
+//        $commandsManager->setCommands([]); //@todo implement it. Load data from config
 
-        if (is_object($app) && $app instanceof Application) {
-            return $app;
+        $str = '';
+        foreach ($commandsManager->getCommands() as $command) {
+            $str .= str_pad($command->getName(), 15) . $command->getDescription() . PHP_EOL;
         }
 
-        throw new InvalidParameterException('Class ' . __CLASS__ . ' tried to use invalid application object');
+        return $str;
     }
 }
