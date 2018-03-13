@@ -87,20 +87,6 @@ class ConsoleOutput
     ];
 
     /**
-     * @var array Map of supported background colors
-     */
-    protected $backgroundColor = [
-        self::BG_BLACK => '40',
-        self::BG_RED => '41',
-        self::BG_GREEN => '42',
-        self::BG_YELLOW => '43',
-        self::BG_BLUE => '44',
-        self::BG_MAGENTA => '45',
-        self::BG_CYAN => '46',
-        self::BG_LIGHT_GRAY => '47',
-    ];
-
-    /**
      * @var array Map of supported attributes
      */
     protected $supportedAttributes = [
@@ -113,6 +99,20 @@ class ConsoleOutput
         self::AT_REVERSE => '7',
         self::AT_NONDISP => '8',
         self::AT_STRIKE => '9',
+    ];
+
+    /**
+     * @var array Map of supported background colors
+     */
+    protected $backgroundColor = [
+        self::BG_BLACK => '40',
+        self::BG_RED => '41',
+        self::BG_GREEN => '42',
+        self::BG_YELLOW => '43',
+        self::BG_BLUE => '44',
+        self::BG_MAGENTA => '45',
+        self::BG_CYAN => '46',
+        self::BG_LIGHT_GRAY => '47',
     ];
 
     /**
@@ -155,9 +155,9 @@ class ConsoleOutput
     public function errorMessage(string $message)
     {
         $message = 'Error: ' . $message;
-        $params = $this->getColorizeParams();
+        $params = $this->getColorizeParams(['backgroundColor' => self::BG_RED,]);
 
-        return $this->getOutputString($message, $params);
+        return $this->getColorizedMessageWithParams($message, $params);
     }
 
     /**
@@ -171,7 +171,7 @@ class ConsoleOutput
         $message = 'Success: ' . $message;
         $params = $this->getColorizeParams(['backgroundColor' => self::BG_GREEN,]);
 
-        return $this->getOutputString($message, $params);
+        return $this->getColorizedMessageWithParams($message, $params);
     }
 
     /**
@@ -185,18 +185,7 @@ class ConsoleOutput
         $message = 'Info: ' . $message;
         $params = $this->getColorizeParams(['backgroundColor' => self::BG_BLUE,]);
 
-        return $this->getOutputString($message, $params);
-    }
-
-    protected function getOutputString(string $message, array $params)
-    {
-        $space = strlen($message) + 4;
-
-        $outputString = $this->colorizeString(str_pad(' ', $space), $params) . PHP_EOL;
-        $outputString .= $this->colorizeString('  ' . $message . '  ', $params) . PHP_EOL;
-        $outputString .= $this->colorizeString(str_pad(' ', $space), $params) . PHP_EOL;
-
-        return $outputString;
+        return $this->getColorizedMessageWithParams($message, $params);
     }
 
     /**
@@ -234,9 +223,22 @@ class ConsoleOutput
         $defaultParams = [
             'foregroundColor' => self::FG_WHITE,
             'supportedAttributes' => self::AT_BOLD,
-            'backgroundColor' => self::BG_GREEN,
         ];
 
         return array_merge($defaultParams, $params);
+    }
+
+    /**
+     * @return string
+     */
+    protected function getColorizedMessageWithParams(string $message, array $params)
+    {
+        $space = strlen($message) + 4;
+
+        $outputString = $this->colorizeString(str_pad(' ', $space), $params) . PHP_EOL;
+        $outputString .= $this->colorizeString('  ' . $message . '  ', $params) . PHP_EOL;
+        $outputString .= $this->colorizeString(str_pad(' ', $space), $params) . PHP_EOL;
+
+        return $outputString;
     }
 }
