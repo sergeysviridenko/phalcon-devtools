@@ -32,7 +32,7 @@ class InfoCommand extends AbstractCommand
     protected $commandName = 'info';
 
     /** @var string*/
-    protected $commandDescription = 'Information about system';
+    protected $commandDescription = 'Shows versions and environment configuration';
 
     /**@var array*/
     protected $params = [];
